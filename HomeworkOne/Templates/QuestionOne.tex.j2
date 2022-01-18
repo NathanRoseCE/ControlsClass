@@ -1,0 +1,68 @@
+\begin{document}
+\item Consider the following system consisting of a cart of mass m attached to a rigid wall by a spring and a
+damper. The spring stiffness $k(w)$ is a nonlinear function of displacement $w$ such that the spring pull(force)
+applied to the mass is in the form of $f_s = k_1w - k_3w^3$, where $k_1$ and $k_3$ are constant scalars. Assume
+that the cart rolls freely without friction. It can be shown that the motion is
+$m\ddot w + c\dot w + k_1w - k_3w^3 = u$
+\begin{enumerate}
+\item The cart is instrumented with an accelerometer, which provides a measurement equation of the form
+  $y = \ddot w$. Express the nonlinear equations of motion, including the output equation in state space form\\
+  This system has two state variables: position and velocity. In order to keep it consistent with the notation
+  in question \ref{one_equilibrium}. the following will be used.
+  \begin{equation}
+    x =
+    \begin{bmatrix}
+      position \\
+      velocity
+    \end{bmatrix} =
+    \begin{bmatrix}
+      w \\
+      \dot w
+    \end{bmatrix}
+  \end{equation}
+  \begin{equation}
+    k_1w = u + k_3w^3 - c \dot w - m \ddot w
+  \end{equation}
+  \begin{equation}
+    w = \frac{u + k_3w^3 - c \dot w - m \ddot w}{k_1}
+  \end{equation}
+  \begin{equation}
+    c\dot w = u + k_3w^3 - k_1w - m \ddot w
+  \end{equation}
+  \begin{equation}
+    \dot w = \frac{u + k_3w^3 - k_1w - m \ddot w}{c}
+  \end{equation}
+\item Assume $m = \PY{one["system"] | MFromSystem}$, $k_1 = \PY{one["system"] | K1FromSystem}$,
+  $k_3 = \PY{one["system"] | K3FromSystem}$, $c = \PY{one["system"] | CFromSystem}$. Determine all the
+  equilibrium points of the system assuming $u = \PY{one["system"] | UFromSystem}$ \\
+  \PY{'Figure out how to find equilibrium points' | TODO}
+\item Using the numerical assumptions above, linearize the equations of motion about the equilibrium point
+  \label{one_equilibrium}
+  \begin{equation}
+    \PY{one["equilibriumPoint"] | bmatrix}\end{equation}
+  That is provide the lienar state space model about the point in the form of:
+  \begin{center}
+    \begin{tabular}{r c l}
+      $\delta \dot{\bar x}$ & $=$ & $A\delta\bar{x}(t) + B\delta\bar{u}(t)$\\
+      $\delta y$ & $=$ & $C\delta\bar x(t) + D\delta\bar u(t)$\\
+      $\delta \bar x$ & $=$ & $C\delta\bar x(t)$
+    \end{tabular}
+  \end{center}
+  For the system that is described by:
+  \begin{equation}
+    \PY{ one | OneNonLinearPosition }
+  \end{equation}
+  \begin{equation}
+    \PY{ one | OneNonLinearVelocity }
+  \end{equation}
+  It can be linearized into:
+  \begin{equation}
+    \PY{ one | OneLinearPosition }
+  \end{equation}
+  \begin{equation}
+    \PY{ one | OneLinearVelocity }
+  \end{equation}
+  which in state space can be represented as:
+  \PY{ one | OneStateSpace }
+\end{enumerate}
+\end{document}
