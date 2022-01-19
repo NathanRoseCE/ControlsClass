@@ -1,0 +1,35 @@
+\begin{document}
+\item The model of a control system with input $u(t)$ and output $y(t)$ is given as
+  \begin{equation}
+    \ddot y(t) + 3\dot y(t) + 7y(t) = \dot u(t) + 2u(t)
+  \end{equation}
+  All initial conditions are zero and teh system is subjected to a unit step time input.
+  \begin{enumerate}
+  \item Find the transfer function $\frac{Y(s)}{U(s)}$\\
+    \begin{equation}
+      \laplace{\ddot y(t) + 3\dot y(t) + 7y(t)} = \laplace{\dot u(t) + 2u(t)}
+    \end{equation}
+    \begin{equation}
+      (s^2Y(s) -sf(0) - f'(0)) + 3(sY(s) - f(0)) + 7Y(s)= sU(s) + u(0)+ 2U(s)
+    \end{equation}
+    \begin{equation}
+      s^2Y(s) + 3sY(s) + 7Y(s)= sU(s) + 2U(s)
+    \end{equation}
+    \begin{equation}
+      \frac{Y(s)}{U(s)}(s^2 + 3s + 7) = s + 2
+    \end{equation}
+    \begin{equation}
+      \frac{Y(s)}{U(s)} = \frac{s + 2}{s^2 + 3s + 7}
+    \end{equation}
+  \item Find the values of all poles and zeros
+    poles are calculated by getting the zeros of the denominator and zeros are calculated by getting the zeros
+    of the denominator
+    
+    zeros: \PY{five_sys | tfObj | zeros | csv}
+    
+    poles: \PY{five_sys | tfObj | poles | complexCsv}
+  \item Find the steady state output response using the final value theorem\label{approximate}
+  \end{enumerate}
+  Approximate Anser for part \ref{approximate} $y_{ss} \approx 0.3$ (Obtain the exact value accurate to the fourth
+  decimal place
+\end{document}

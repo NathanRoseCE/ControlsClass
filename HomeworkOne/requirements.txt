@@ -1,1 +1,3 @@
 LatexTemplater==0.6.1
+control
+slycot

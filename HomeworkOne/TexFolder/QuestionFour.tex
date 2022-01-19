@@ -1,0 +1,41 @@
+\begin{document}
+\item Find the transfer function matrix for the system described as
+  \begin{equation}
+\dot x = \begin{bmatrix}
+-1 & -2 & 6\\
+2 & -3 & -2\\
+-2 & -2 & 1
+\end{bmatrix}
+x + \begin{bmatrix}
+1 & 1\\
+1 & -1\\
+1 & 0
+\end{bmatrix}
+u\end{equation}
+\begin{equation}
+y = \begin{bmatrix}
+-1 & -1 & 2\\
+1 & 1 & -1
+\end{bmatrix}
+x + \begin{bmatrix}
+0 & 0\\
+0 & 0
+\end{bmatrix}
+u\end{equation}
+
+  
+  \begin{equation}
+    F(s) = C(sI-A)B + D
+  \end{equation}
+  That is the equation for how to do that and I could grind through this process but honestly that sounds
+  terrible and ill probably make a bunch of minor math mistakes. So I am going to put this in python using thier
+  control library and spit out an answer.
+
+  \begin{equation}
+\begin{bmatrix}
+\frac{6.0s - 30.0}{1.0s^{3} + 3.0s^{2} + 11.0s + 57.0} & \frac{6.0s - 18.0}{1.0s^{3} + 3.0s^{2} + 11.0s + 57.0}\\
+\frac{1.0s^{2} + 6.0s + 29.0}{1.0s^{3} + 3.0s^{2} + 11.0s + 57.0} & \frac{6.0s + 6.0}{1.0s^{3} + 3.0s^{2} + 11.0s + 57.0}
+\end{bmatrix}\end{equation}
+
+  
+\end{document}

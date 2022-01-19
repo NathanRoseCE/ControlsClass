@@ -13,14 +13,22 @@
 \usepackage{docmute}
 \usepackage{import}
 \usepackage{amsmath}
+\usepackage{mathrsfs}
 
 \title{Homework 1}
 \author{Nathan Rose}
 \date{\today}
 
+
+\newcommand{\laplace}[1]{\mathscr{L}(#1)}
+\newcommand{\laplaceinv}[1]{\mathscr{L}^{-1}(#1)}
 \begin{document}
 \maketitle
 \begin{enumerate}
-  \subimport{./}{questionOne}
+  \subimport{./}{QuestionOne}
+  \subimport{./}{QuestionTwo}
+  \subimport{./}{QuestionThree}
+  \subimport{./}{QuestionFour}
+  \subimport{./}{QuestionFive}
 \end{enumerate}
 \end{document}

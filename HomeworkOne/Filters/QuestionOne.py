@@ -124,4 +124,4 @@ class StateSpace(TemplateFilter):
         D = [[0],
              [0]]
         inst = TemplateCore.instance()
-        return inst.filter("StateSpace", (A,B,C,D))
+        return inst.filter("ss", (A,B,C,D))

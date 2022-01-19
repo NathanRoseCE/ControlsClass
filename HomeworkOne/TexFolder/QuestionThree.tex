@@ -1,0 +1,55 @@
+\begin{document}
+\item Find the state space representation for the system described as
+  \begin{equation}
+    \dot w_1 + 3(w_1 + w_2) = u_1
+  \end{equation}
+  \begin{equation}
+    \ddot w_2 + 4\dot w_2 + 3w_2 = u_2
+  \end{equation}
+  Show the A and b matrix of your solution
+
+  Work:
+
+  For this problem there needs to be 3 state variables, 1 for $w_1$ and two for $w_2$
+  \begin{equation}
+    \dot w_1 = u_1 - 3w_1 - 3w_2)
+  \end{equation}
+  \begin{equation}
+    \ddot w_2 = u_2 - 4\dot w_2 - 3w_2 
+  \end{equation}
+  \begin{equation}
+    \dot w_2 = \frac{u_2 - \ddot w_2 - 3w_2} 4
+  \end{equation}
+  \begin{equation}
+    \dot w_2 = \frac{u_2 - (u_2 - 4\dot w_2 - 3w_2) - 3w_2} 4
+  \end{equation}
+
+  Final:
+  {\LARGE \color{red} TODO: Figure out second state variable}
+  \begin{equation}
+    \begin{bmatrix}
+      \dot w_1 \\
+      \dot w_2 \\
+      \ddot w_2
+    \end{bmatrix} =
+    \begin{bmatrix}
+      -3 & -3 & 0\\
+      idk\\
+       0 & -3 & -4
+    \end{bmatrix}
+    \begin{bmatrix}
+      w_1 \\
+      w_2 \\
+      \dot w_2
+    \end{bmatrix} +
+    \begin{bmatrix}
+      1 & 0 \\
+      idk\\
+      0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+      u_1 \\
+      u_2
+    \end{bmatrix}
+  \end{equation}
+\end{document}
