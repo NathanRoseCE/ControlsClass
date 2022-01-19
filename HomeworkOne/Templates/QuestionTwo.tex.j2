@@ -2,7 +2,15 @@
 \item For the mass-spring-dampener system given in figure 2. Where $k_1$, $k_2$, $c_1$, and $c_2$ are constant
   scalars
   \begin{enumerate}
-  \item obtain the differential equations of motion of the system
+  \item obtain the differential equations of motion of the system \\
+  for this problem, positive is to the right
+  \begin{equation}
+    F_{n1} = m_1\ddot w_1 = -k_1w_1 - c_1\dot w_1 - c_2(\dot w_2-\dot w_1) + k_2(w_2 - w_1)
+  \end{equation}
+  \begin{equation}
+    F_{n2} = m_2\ddot w_2 = c_2(\dot w_2-\dot w_1) - k_2(w_2 - w_1) + u
+  \end{equation}
+  
   \item Write the equations of motion in the state space form
     \begin{center}
       $\dot {\bar x} = A\bar x + B\bar u$\\
@@ -15,6 +23,65 @@
     \begin{bmatrix}
       0_{2 \times 2} & I_2 \\
       A_{21} & A_{22}
+    \end{bmatrix}
+  \end{equation} \\
+
+  \begin{equation}
+    \ddot w_1 = \frac{-k_1w_1 - c_1\dot w_1 - c_2(\dot w_2-\dot w_1) + k_2(w_2 - w_1)}{m_1}
+  \end{equation}
+  \begin{equation}
+    \ddot w_1 = \frac{-k_1w_1 - c_1\dot w_1 - c_2\dot w_2-c_2\dot w_1 + k_2w_2 - k_2w_1}{m_1}
+  \end{equation}
+  \begin{equation}
+    \ddot w_1 = \frac{(-k_1-k_2)w_1 - (c_1+c_2)\dot w_1 - c_2\dot w_2 + k_2w_2}{m_1}
+  \end{equation}
+  \begin{equation}
+    \ddot w_2 = \frac{c_2(\dot w_2-\dot w_1) - k_2(w_2 - w_1) + u}{m_2}
+  \end{equation}
+  \begin{equation}
+    \ddot w_2 = \frac{c_2\dot w_2 - c_2\dot w_1) - k_2w_2 + k_2w_1) + u}{m_2}
+  \end{equation}
+  \begin{equation}
+    \begin{bmatrix}
+      \dot w_1 \\
+      \dot w_2 \\
+      \ddot w_1 \\
+      \ddot w_2
+    \end{bmatrix} =
+    \begin{bmatrix}
+      0 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 1 \\
+      -\frac{(k_1+k_2)w_1}{m_1} & \frac{k_2}{m_1} & -\frac{c_1+c_2}{m_1} & -\frac{c_2}{m_2} \\
+      k_2 & -k_2 & -c_2 & c_2
+    \end{bmatrix}
+    \begin{bmatrix}
+      w_1 \\
+      w_2 \\
+      \dot w_1 \\
+      \dot w_2
+    \end{bmatrix} +
+    \begin{bmatrix}
+      0 \\
+      0 \\
+      0 \\
+      \frac{1}{m}
+    \end{bmatrix}u
+  \end{equation}
+  \begin{equation}
+    \begin{bmatrix}
+      y
+    \end{bmatrix} =
+    \begin{bmatrix}
+      1 & 0 & 0 & 0 \\
+      0 & 1 & 0 & 0 \\
+      0 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+      w_1 \\
+      w_2 \\
+      \dot w_1 \\
+      \dot w_2
     \end{bmatrix}
   \end{equation}
 \end{document}

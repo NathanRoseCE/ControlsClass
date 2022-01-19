@@ -3,12 +3,14 @@ from LatexTemplater.TemplateCore import TemplateCore
 from typing import Dict, Callable, Tuple, Iterable
 from control import tf
 import control
+import numpy as np
 
 def registrationInfo() -> Dict[str, Callable[[any], str]]:
      return {
           TODO.name: TODO.filter,
           StateSpace.name: StateSpace.filter,
           Equation.name: Equation.filter,
+          InlineEquation.name: InlineEquation.filter,
           TransferFunction.name: TransferFunction.filter,
           Fraction.name: Fraction.filter,
           Polynomial.name: Polynomial.filter,
@@ -19,6 +21,7 @@ def registrationInfo() -> Dict[str, Callable[[any], str]]:
           CSV.name: CSV.filter,
           ComplexCSV.name: ComplexCSV.filter,
           Imaginary.name: Imaginary.filter,
+          ImaginaryConjugate.name: ImaginaryConjugate.filter
     }
     
 class TODO(TemplateFilter):
@@ -37,6 +40,13 @@ class Equation(TemplateFilter):
                   val.strip() +
                   r"\end{equation}"  + "\n")
 
+class InlineEquation(TemplateFilter):
+     name="inline"
+
+     @staticmethod
+     def filter(val:str) -> str:
+          return f"${val.strip()}$"
+     
 class StateSpace(TemplateFilter):
     name="ss"
 
@@ -116,8 +126,22 @@ class ComplexCSV(TemplateFilter):
           inst = TemplateCore.instance()
           return inst.filter(
                "csv",
-               [inst.filter("imag", val) for val in vals]
+               [inst.filter("imag_conj", val) for val in ComplexCSV.combineConjugates(vals)]
           )
+
+     @staticmethod
+     def combineConjugates(vals: Iterable[complex]) -> str:
+          """
+          returns only the conjugates with a positive i
+          """
+          conjugates = []
+          for val in vals:
+               if np.iscomplexobj(val):
+                    val = val.real + (abs(val.imag)*1j)
+                    if val in conjugates:
+                         continue
+               conjugates.append(val)
+          return conjugates
           
 
 class Fraction(TemplateFilter):
@@ -178,7 +202,8 @@ class Float(TemplateFilter):
 
 class Imaginary(TemplateFilter):
      name="imag"
-     
+
+     @staticmethod
      def filter(val: complex) -> str:
           """
           rounds an imaginary number to ROUND_TO decimal places and
@@ -195,6 +220,32 @@ class Imaginary(TemplateFilter):
                else:
                     imag_str += "-"
                imag_str += inst.filter("float", val.imag)
+          if val.real == 0 and val.imag == 0:
+               return "0"
+          elif val.real != 0 and val.imag == 0:
+               return real_str
+          elif val.real == 0 and val.imag != 0:
+               return imag_str
+          else:
+               return real_str + imag_str
+
+class ImaginaryConjugate(TemplateFilter):
+     name="imag_conj"
+
+     @staticmethod     
+     def filter(val: complex, conj: bool=False) -> str:
+          """
+          rounds an imaginary number to ROUND_TO decimal places and
+          casts to a string
+          This one will do \pm instead of a normal + or - i
+          """
+          inst = TemplateCore.instance()
+          real_str = ""
+          imag_str = ""
+          if val.real != 0:
+               real_str += inst.filter("float", val.real)
+          if val.imag != 0:
+               imag_str += r" \pm " + inst.filter("float", val.imag) + "j"
           if val.real == 0 and val.imag == 0:
                return "0"
           elif val.real != 0 and val.imag == 0:

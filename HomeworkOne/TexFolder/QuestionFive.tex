@@ -22,13 +22,17 @@
       \frac{Y(s)}{U(s)} = \frac{s + 2}{s^2 + 3s + 7}
     \end{equation}
   \item Find the values of all poles and zeros
+    
     poles are calculated by getting the zeros of the denominator and zeros are calculated by getting the zeros
-    of the denominator
+    of the denominator. (I used python to calculate these values)
     
-    zeros: -2.0
+    zeros: $-2.0$
     
-    poles: -1.5+2.179, -1.5--2.179
+    poles: $-1.5 \pm 2.179j$
   \item Find the steady state output response using the final value theorem\label{approximate}
+    \begin{equation}
+      \lim_{s \to 0}F(s) = \lim_{s \to 0}\frac{s + 2}{s^2 + 3s + 7} = \frac 2 7 = 0.2857
+    \end{equation}
   \end{enumerate}
   Approximate Anser for part \ref{approximate} $y_{ss} \approx 0.3$ (Obtain the exact value accurate to the fourth
   decimal place
