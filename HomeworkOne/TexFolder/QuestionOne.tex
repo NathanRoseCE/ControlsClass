@@ -21,10 +21,7 @@ $m\ddot w + c\dot w + k_1w - k_3w^3 = u$
     \end{bmatrix}
   \end{equation}
   \begin{equation}
-    k_1w = u + k_3w^3 - c \dot w - m \ddot w
-  \end{equation}
-  \begin{equation}
-    w = \frac{u + k_3w^3 - c \dot w - m \ddot w}{k_1}
+    \ddot w = \frac{u - c\dot w - k_1w + k_3w^3}{m}
   \end{equation}
   \begin{equation}
     c\dot w = u + k_3w^3 - k_1w - m \ddot w
@@ -35,16 +32,37 @@ $m\ddot w + c\dot w + k_1w - k_3w^3 = u$
 \item Assume $m = 1$, $k_1 = 4$,
   $k_3 = 1$, $c = 1$. Determine all the
   equilibrium points of the system assuming $u = 0$ \\
-  {\LARGE \color{red} TODO: Figure out how to find equilibrium points}
+  \begin{equation}
+    \begin{bmatrix}
+      \frac{u + k_3w^3 - k_1w - m \ddot w}{c} \\
+      \frac{u - c\dot w - k_1w + k_3w^3}{m}
+    \end{bmatrix} =
+    \begin{bmatrix}
+      0 \\
+      0
+    \end{bmatrix}
+  \end{equation}
+  \begin{equation}
+    \begin{bmatrix}
+      \frac{1w^3 - 4w -  1 \ddot w}{c} \\
+      \frac{- c\dot w - 4w + 1w^3}{1}
+    \end{bmatrix} =
+    \begin{bmatrix}
+      0 \\
+      0
+    \end{bmatrix}
+  \end{equation}
+  {\LARGE \color{red} TODO: not sure how to deal with ddot w as a non-state variable}
 \item Using the numerical assumptions above, linearize the equations of motion about the equilibrium point
   \label{one_equilibrium}
   \begin{equation}
-    \begin{bmatrix}
+\begin{bmatrix}
 2\\
 0
-\end{bmatrix}
-\end{equation}
+\end{bmatrix}\end{equation}
+
   That is provide the lienar state space model about the point in the form of:
+  {\LARGE \color{red} TODO: input linearlization}
   \begin{center}
     \begin{tabular}{r c l}
       $\delta \dot{\bar x}$ & $=$ & $A\delta\bar{x}(t) + B\delta\bar{u}(t)$\\
