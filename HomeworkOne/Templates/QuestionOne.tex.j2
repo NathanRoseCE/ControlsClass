@@ -52,12 +52,69 @@ $m\ddot w + c\dot w + k_1w - k_3w^3 = u$
       0
     \end{bmatrix}
   \end{equation}
-  \PY{ 'not sure how to deal with ddot w as a non-state variable' | TODO }
+
+  \begin{equation}
+    \begin{bmatrix}
+      \dot x_0 \\
+      \dot x_1
+    \end{bmatrix} =
+    \begin{bmatrix}
+      x_1 \\
+      \frac{u - c\dot w - k_1w + k_3w^3}  m
+    \end{bmatrix}
+  \end{equation}
+  because u is 0, that term can be discarded. then we can find in what states $A=0$
+  
+  \begin{equation}
+    \begin{bmatrix}
+      0 \\
+      0
+    \end{bmatrix} =
+    \begin{bmatrix}
+      x_1 \\
+      \frac{-c\dot w - k_1w + k_3w^3} m
+    \end{bmatrix}
+  \end{equation}
+  obviously $x_1$ must always be 0
+  \begin{equation}
+    0 =
+    \frac{-c\dot w - k_1w + k_3w^3} m =
+    -c\dot w - k_1w + k_3w^3
+  \end{equation}
+  which allows us to simplify
+  \begin{equation}
+    0 =
+    -c\dot w - k_1w + k_3w^3=
+    k_1x_0 + k_3{x_0}^3
+  \end{equation}
+  \begin{equation}
+    0 =
+    -k_1x_0 + k_3{x_0}^3 =
+    x_0(-k_1 + k_3{x_0}^2)
+  \end{equation}
+  one solution for $x_0$ is 0
+  \begin{equation}
+    0 = -k_1 + k_3{x_0}^2
+  \end{equation}
+  \begin{equation}
+    x_0 = \sqrt{frac{k_1}{k_3}} = \sqrt{4} = 2
+  \end{equation}
+  two equilibrium points are:
+  \begin{equation}
+    x_{eq} = 
+    \begin{bmatrix}
+      0 \\
+      0
+    \end{bmatrix},
+    \begin{bmatrix}
+      2\\
+      0
+    \end{bmatrix}
+  \end{equation}
 \item Using the numerical assumptions above, linearize the equations of motion about the equilibrium point
   \label{one_equilibrium}
   \PY{one["equilibriumPoint"] | bmatrix | eq}
-  That is provide the lienar state space model about the point in the form of:
-  \PY{ 'input linearlization' | TODO }
+  That is provide the linear state space model about the point in the form of:
   \begin{center}
     \begin{tabular}{r c l}
       $\delta \dot{\bar x}$ & $=$ & $A\delta\bar{x}(t) + B\delta\bar{u}(t)$\\
@@ -72,7 +129,9 @@ $m\ddot w + c\dot w + k_1w - k_3w^3 = u$
   \begin{equation}
     \PY{ one | OneNonLinearVelocity }
   \end{equation}
-  It can be linearized into:
+
+  It can be linearized as seen above
+  into:
   \begin{equation}
     \PY{ one | OneLinearPosition }
   \end{equation}

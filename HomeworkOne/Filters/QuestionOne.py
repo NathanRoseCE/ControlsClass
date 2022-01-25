@@ -56,8 +56,7 @@ class NonLinearPosition(TemplateFilter):
     @staticmethod
     def filter(val: dict) -> str:
         system = val['system']
-        return (r"w = \frac{" + f"{system['u']} + {system['k3']}w^3 - {system['c']}" +
-                r"\dot w - " + f"{system['m']}" + r"\ddot w}{" + str(system["k1"]) + r"}")
+        return (r"\dot w = \dot w")
     
 class NonLinearVelocity(TemplateFilter):
     name="OneNonLinearVelocity"
@@ -65,7 +64,7 @@ class NonLinearVelocity(TemplateFilter):
     @staticmethod
     def filter(val: dict) -> str:
         system = val['system']
-        return (r"\dot w = \frac{" + f"{system['u']} + {system['k3']}w^3 - {system['k1']}w" +
+        return (r"\ddot w = \frac{" + f"{system['u']} + {system['k3']}w^3 - {system['k1']}w" +
                 f"- {system['m']}" + r"\ddot w}{" + str(system["c"]) + r"}")
 
 def linearize(val: dict) -> dict:
@@ -81,13 +80,19 @@ def linearize(val: dict) -> dict:
       "b": [[b_1],[b_2]]
     }
     """
+    system = val["system"]
+    x_0 = val["equilibriumPoint"][0][0]
+    x_1 = val["equilibriumPoint"][1][0]
+    k_1 = system["k1"]
+    k_3 = system["k3"]
+    c = system["c"]
+    m = system["m"]
     return {
-        "a": [[1,2],
-              [3,4]],
-        "b": [[5],
-              [6]]
+         "a": [[0,1],
+               [(3*k_3*(x_0**2)-k_1), -(c/m)]],
+         "b": [[0],
+               [1/m]]
     }
-    # raise NotImplimented
     
 class LinearPosition(TemplateFilter):
     name="OneLinearPosition"
