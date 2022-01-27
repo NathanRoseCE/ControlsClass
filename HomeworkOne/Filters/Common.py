@@ -1,11 +1,11 @@
 from LatexTemplater.TemplateFilter import TemplateFilter
 from LatexTemplater.TemplateCore import TemplateCore
-from typing import Dict, Callable, Tuple, Iterable
+from typing import Dict, Callable, Tuple, Iterable, Any
 from control import tf
 import control
 import numpy as np
 
-def registrationInfo() -> Dict[str, Callable[[any], str]]:
+def registrationInfo() -> Dict[str, Callable[[Any], str]]:
      return {
           TODO.name: TODO.filter,
           StateSpace.name: StateSpace.filter,
@@ -72,6 +72,9 @@ class TransferFunction(TemplateFilter):
 
     @staticmethod
     def filter(transfer: tf) -> str:
+         """
+         Takes a 2d list of values representing the coefficients in the numerator and denominator
+         """
          inst = TemplateCore.instance()
          scipyLTI = transfer.returnScipySignalLTI()
          lti_response = []

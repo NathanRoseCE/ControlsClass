@@ -31,11 +31,11 @@ u\end{equation}
   terrible and ill probably make a bunch of minor math mistakes. So I am going to put this in python using thier
   control library and spit out an answer.
 
+  Or I was until I heard you mention no ss2tf use, only basic matrix operations. I implimented it using
+  sympy which allowed me to put the equation in and tell it to simplify. 
+
   \begin{equation}
-\begin{bmatrix}
-\frac{6.0s - 30.0}{1.0s^{3} + 3.0s^{2} + 11.0s + 57.0} & \frac{6.0s - 18.0}{1.0s^{3} + 3.0s^{2} + 11.0s + 57.0}\\
-\frac{1.0s^{2} + 6.0s + 29.0}{1.0s^{3} + 3.0s^{2} + 11.0s + 57.0} & \frac{6.0s + 6.0}{1.0s^{3} + 3.0s^{2} + 11.0s + 57.0}
-\end{bmatrix}\end{equation}
+\left[\begin{matrix}- \frac{6 s + 30}{s^{3} + 3 s^{2} + 11 s + 57} & - \frac{6 s + 18}{s^{3} + 3 s^{2} + 11 s + 57}\\\frac{s^{2} + 6 s + 29}{s^{3} + 3 s^{2} + 11 s + 57} & \frac{6 \left(s + 1\right)}{s^{3} + 3 s^{2} + 11 s + 57}\end{matrix}\right]\end{equation}
 
   
 \end{document}
