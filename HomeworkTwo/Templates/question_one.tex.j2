@@ -1,0 +1,15 @@
+\item A system is described by
+  \PY{ one_system | one_system_eq }
+  Obtain the STM of the uncontrolled system using the following methods:
+  \begin{enumerate}
+  \item Via taking the laplace inverse of $(sI - A)^{-1}$ \\
+    \PY{ one_system | one_laplace_inv }
+    
+    The theta in the equation is the step function as described
+    \href{https://math.stackexchange.com/questions/1967109/inverse-laplace-transfrom-using-sympy}{here}
+    
+    This is accomplished with the following code
+    \PY{ 'one_a.py' | snippet }
+  \item Via model decomposition of Matrix A
+  \item Via the Cayley-Hamilton theorem
+  \end{enumerate}

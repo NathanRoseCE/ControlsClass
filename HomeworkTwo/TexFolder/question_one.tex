@@ -1,0 +1,40 @@
+\item A system is described by
+  \begin{equation}
+\dot x = \begin{bmatrix}
+-2 & 1\\
+-1 & 0
+\end{bmatrix}
+x + \begin{bmatrix}
+3\\
+1
+\end{bmatrix}
+u\end{equation}
+
+  Obtain the STM of the uncontrolled system using the following methods:
+  \begin{enumerate}
+  \item Via taking the laplace inverse of $(sI - A)^{-1}$ \\
+    \begin{equation}
+\mathscr{L}^{-1}\Big ((sI-A)^{-1}\Big ) = \left[\begin{matrix}\left(1 - t\right) e^{- t} \theta\left(t\right) & t e^{- t} \theta\left(t\right)\\- t e^{- t} \theta\left(t\right) & \left(t + 1\right) e^{- t} \theta\left(t\right)\end{matrix}\right]\end{equation}
+
+    
+    The theta in the equation is the step function as described
+    \href{https://math.stackexchange.com/questions/1967109/inverse-laplace-transfrom-using-sympy}{here}
+    
+    This is accomplished with the following code
+    \begin{minted}{python}
+import numpy as np
+import sympy
+from sympy import eye, shape, simplify, inverse_laplace_transform
+
+
+def STM_laplace_inverse(A: np.matrix) -> None:
+    s, t = sympy.symbols('s, t')
+    s_I = eye(shape(A)[0])*s
+    return simplify(
+        inverse_laplace_transform((s_I - A).inv(), s, t)
+    )
+\end{minted}
+
+  \item Via model decomposition of Matrix A
+  \item Via the Cayley-Hamilton theorem
+  \end{enumerate}

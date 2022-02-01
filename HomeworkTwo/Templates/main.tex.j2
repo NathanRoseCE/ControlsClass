@@ -1,0 +1,36 @@
+\documentclass[11pt]{article}
+
+%packages
+\usepackage{geometry} %set peper size and font
+\usepackage{parskip} %probs redundant with setspace
+\usepackage{setspace} %single space document
+\usepackage{enumitem} %spacing after indent
+\usepackage{tikz} %arrays
+\usepackage{xcolor} %color
+\usepackage{hyperref} %links
+\usepackage{ifthen} %self explanatory
+\usepackage{titlesec} %spacing for sections
+\usepackage{docmute}
+\usepackage{import}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{minted}
+
+\title{Homework \PY{homeworkNum}}
+\author{\PY{name}}
+\date{\today}
+
+
+\newcommand{\laplace}[1]{\mathscr{L}(#1)}
+\newcommand{\laplaceinv}[1]{\mathscr{L}^{-1}(#1)}
+\begin{document}
+\maketitle
+\begin{enumerate}
+  \subimport{./}{question_one}
+  \subimport{./}{question_two}
+  \subimport{./}{question_three}
+  \subimport{./}{question_four}
+  \subimport{./}{question_five}
+  \subimport{./}{question_six}
+\end{enumerate}
+\end{document}
