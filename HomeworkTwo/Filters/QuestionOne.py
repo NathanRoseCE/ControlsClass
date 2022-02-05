@@ -38,8 +38,13 @@ class OneA(TemplateFilter):
         inst = TemplateCore.instance()
         A, B = inst.filter("one_system", val)
         result = STM_laplace_inverse(np.matrix(A))
-        return inst.filter("eq",
-                           inst.filter("laplace_inv",
-                                       r"(sI-A)^{-1}") + 
-                           " = " + latex(result))
+        sI_A_eq = inst.filter("eq",
+                              "(sI-A) = " + latex(sI_A(np.matrix(A))))
+        inversed_eq = inst.filter("eq",
+                                  "(sI-A)^{-1} = " + latex(simplify(sI_A(np.matrix(A)).inv())))
+        final_ans = inst.filter("eq",
+                                inst.filter("laplace_inv",
+                                            r"(sI-A)^{-1}") + 
+                                " = " + latex(result))
+        return sI_A_eq + inversed_eq + final_ans
 

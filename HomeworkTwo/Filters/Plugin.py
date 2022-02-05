@@ -1,5 +1,6 @@
 from LatexTemplater.TemplateCore import TemplateCore
 from . import QuestionOne
+from . import QuestionTwo
 from . import Common
 
 
@@ -11,6 +12,7 @@ def initialize():
     registrationFuncs = [
         Common.registrationInfo,
         QuestionOne.registrationInfo,
+        QuestionTwo.registrationInfo,
     ]
     for registerFunc in registrationFuncs:
         filterinfo = registerFunc()

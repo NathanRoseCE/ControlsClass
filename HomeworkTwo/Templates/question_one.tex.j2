@@ -8,8 +8,48 @@
     The theta in the equation is the step function as described
     \href{https://math.stackexchange.com/questions/1967109/inverse-laplace-transfrom-using-sympy}{here}
     
-    This is accomplished with the following code
-    \PY{ 'one_a.py' | snippet }
-  \item Via model decomposition of Matrix A
-  \item Via the Cayley-Hamilton theorem
+    This is accomplished with the code in \autoref{appendix:one-a-src}
+  \item Via model decomposition of Matrix A \\
+    \PY{'this' | TODO}
+  \item Via the Cayley-Hamilton theorem \\
+    Cayley-hamilton theorem is hard to code in a way to show intermediate steps, so this will be done by
+    hand.
+
+    This will be done by using the Cayley-hamilton theorem to solve for $e^{At}$ then plugging it into 
+    equation 22 on slide 40 to get the value of the stm
+    \begin{itemize}
+    \item Find the characteristic polynomial \\
+      \begin{equation}
+        0 = |\lambda I - A| =
+        \begin{vmatrix}
+          \lambda +2 & -1 \\
+          1 & \lambda 
+        \end{vmatrix} =
+        \lambda^2 + 2\lambda + 1
+      \end{equation}
+      \begin{equation}
+        \lambda = -1,-1
+      \end{equation}
+    \item solve for $\beta_0$ and $\beta_1$ \\
+      \begin{equation}
+        e^{-t} = \beta_0 - \beta_1
+      \end{equation}
+      \begin{equation}
+        -e^{-t} = \beta_1
+      \end{equation}
+      \begin{equation}
+        -e^{-t} = \beta_0 - e^{-t}
+      \end{equation}
+      \begin{equation}
+        \beta_0 =2e^{-t}
+      \end{equation}
+    \item solve $e^{At}$(and STM)
+      \begin{equation}
+        STM = e^{At} = \beta_oI + \beta_1A =
+        \begin{bmatrix}
+          2e^{-t}-
+        \end{bmatrix}
+      \end{equation}
+    \end{itemize}
   \end{enumerate}
+  \PY{ 'figure out why this is wrong' | TODO } 

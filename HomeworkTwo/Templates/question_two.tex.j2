@@ -1,9 +1,15 @@
 \item In the system in Problem 1,
   \begin{enumerate}
   \item Obtain the zero input solution $x_{Z1}(t)$ for the initial condition
-    $\bar x(0) = \PY{ two_a_initial_state | bmatrix }$ \label{2-a}
-    
-  \item Obtain the zero state solution $x_{ZS}(t)$ for input $u(t) = e^{2t}$ for $t > 0$ \label{2-b}
+    $\bar x(0) = \PY{ two_a_initial_state | bmatrix }$ \label{2-a} \\
+    \PY{ (one_system, two_a_initial_state) | two_a }
+  \item Obtain the zero state solution $x_{ZS}(t)$ for input $u(t) = e^{2t}$ for $t > 0$ \label{2-b}\\o
+    \PY{ one_system | two_b }
   \item Obtain the total solution $\bar x(t)$ for the initial conditions and input in \ref{2-a} and
-    \ref{2-b}
+    \ref{2-b}.\\
+    
+    Because this is an LTI system, the super-position property applies and the results of both of these systems
+    can be added together to produce a system with initial state of \ref{2-a} and the input of \ref{2-b}
+    \PY{ (one_system, two_a_initial_state) | two_c }
+    
   \end{enumerate}

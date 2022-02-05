@@ -5,9 +5,25 @@
 10\\
 1
 \end{bmatrix}
-$ \label{2-a}
-    
-  \item Obtain the zero state solution $x_{ZS}(t)$ for input $u(t) = e^{2t}$ for $t > 0$ \label{2-b}
+$ \label{2-a} \\
+    \begin{equation}
+x(t) = STM(t)x_0\end{equation}
+\begin{equation}
+x(t) =\left[\begin{matrix}\left(10 - 9 t\right) e^{- t} \theta\left(t\right)\\\left(1 - 9 t\right) e^{- t} \theta\left(t\right)\end{matrix}\right]\end{equation}
+
+  \item Obtain the zero state solution $x_{ZS}(t)$ for input $u(t) = e^{2t}$ for $t > 0$ \label{2-b}\\o
+    \begin{equation}
+x_{zs}(t) = \int_{t_0}^t \Phi(t,\tau)B(\tau)u(\tau)d\tau\end{equation}
+\begin{equation}
+\left[\begin{matrix}\left(- 2 t e^{t} + 5 e^{t} - 5\right) \theta\left(t\right)\\\left(- 2 t e^{t} + 3 e^{t} - 3\right) \theta\left(t\right)\end{matrix}\right]\end{equation}
+
   \item Obtain the total solution $\bar x(t)$ for the initial conditions and input in \ref{2-a} and
-    \ref{2-b}
+    \ref{2-b}.\\
+    
+    Because this is an LTI system, the super-position property applies and the results of both of these systems
+    can be added together to produce a system with initial state of \ref{2-a} and the input of \ref{2-b}
+    \begin{equation}
+x(t) = \left[\begin{matrix}\left(- 9 t - \left(2 t e^{t} - 5 e^{t} + 5\right) e^{t} + 10\right) e^{- t} \theta\left(t\right)\\\left(- 9 t - \left(2 t e^{t} - 3 e^{t} + 3\right) e^{t} + 1\right) e^{- t} \theta\left(t\right)\end{matrix}\right]\end{equation}
+
+    
   \end{enumerate}
