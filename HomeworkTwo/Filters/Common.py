@@ -2,6 +2,7 @@ from LatexTemplater.TemplateFilter import TemplateFilter
 from LatexTemplater.TemplateCore import TemplateCore
 from typing import Dict, Callable, Tuple, Iterable, Any
 from control import tf
+from sympy import Matrix
 import control
 import numpy as np
 import os
@@ -28,6 +29,7 @@ def registrationInfo():
           CodeSnippet.name: CodeSnippet.filter,
           LaplaceInverse.name: LaplaceInverse.filter,
           Laplace.name: Laplace.filter,
+          EigenValues.name: EigenValues.filter,
     }
     
 class TODO(TemplateFilter):
@@ -271,20 +273,23 @@ class ImaginaryConjugate(TemplateFilter):
           This one will do \pm instead of a normal + or - i
           """
           inst = TemplateCore.instance()
-          real_str = ""
-          imag_str = ""
-          if val.real != 0:
-               real_str += inst.filter("float", val.real)
-          if val.imag != 0:
-               imag_str += r" \pm " + inst.filter("float", val.imag) + "j"
-          if val.real == 0 and val.imag == 0:
-               return "0"
-          elif val.real != 0 and val.imag == 0:
-               return real_str
-          elif val.real == 0 and val.imag != 0:
-               return imag_str
+          if np.iscomplexobj(val):
+               real_str = ""
+               imag_str = ""
+               if val.real != 0:
+                    real_str += inst.filter("float", val.real)
+               if val.imag != 0:
+                    imag_str += r" \pm " + inst.filter("float", val.imag) + "j"
+               if val.real == 0 and val.imag == 0:
+                    return "0"
+               elif val.real != 0 and val.imag == 0:
+                    return real_str
+               elif val.real == 0 and val.imag != 0:
+                    return imag_str
+               else:
+                    return real_str + imag_str
           else:
-               return real_str + imag_str
+               return inst.filter("float", val)
 
 class CodeSnippet(TemplateFilter):
      name="snippet"
@@ -317,3 +322,16 @@ class Laplace(TemplateFilter):
           return (r"\mathscr{L}\Big (" +
                   eq +
                   r"\Big )")
+
+class EigenValues(TemplateFilter):
+     name = "eig_vals"
+
+     @staticmethod
+     def filter(matrix) -> Iterable[str]:
+          matrix = Matrix(matrix)
+          eigenvalues = [
+               eigen_val 
+               for eigen_val, multiplicity in matrix.eigenvals().items()
+               for _ in range(multiplicity)
+          ]
+          return eigenvalues

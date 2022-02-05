@@ -7,3 +7,34 @@
   \end{equation}
   prove that the transfer function matrix is invariant to any similarity transformation of the state i.e.
   $\bar x = T\bar z$, where $T$ is a constant invertible matrix.
+  \begin{equation}
+    \dot x = Ax + Bu
+  \end{equation}
+  \begin{equation}
+    T\dot z = ATz + Bu
+  \end{equation}
+  \begin{equation}
+    \dot z = T^{-1}ATz + T^{-1}Bu
+  \end{equation}
+  \begin{equation}
+    A_Z = T^{-1}AT, B_Z = T^{-1}B
+  \end{equation}
+  \begin{equation}
+    C_Z = CT^{-1}, D_Z = D
+  \end{equation}
+  \begin{equation}
+    \laplaceinv{C(sI-A)^{-1}B + D}
+  \end{equation}
+  \begin{equation}
+    \laplaceinv{C_Z(sI-A_Z)^{-1}B_Z + D_Z}
+  \end{equation}
+  \begin{equation}
+    \laplaceinv{CT^{-1}(sI-T^{-1}AT)^{-1}T^{-1}B + D}
+  \end{equation}
+  \begin{equation}
+    \laplaceinv{CT^{-1}T(sI-A)^{-1}TT^{-1}B + D}
+  \end{equation}
+  \begin{equation}
+    \laplaceinv{C(sI-A)^{-1}B + D}
+  \end{equation}
+  equality!
