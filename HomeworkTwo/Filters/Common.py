@@ -1,6 +1,7 @@
 from LatexTemplater.TemplateFilter import TemplateFilter
 from LatexTemplater.TemplateCore import TemplateCore
 from typing import Dict, Callable, Tuple, Iterable, Any
+import logging
 from control import tf
 from sympy import Matrix
 import control

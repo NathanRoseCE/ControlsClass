@@ -32,7 +32,7 @@ def zero_input_equation(A: Matrix, x_0: Matrix):
 
 \end{minted}
 
-\section{Three B source code} \label{appendix:two-b-src}
+\section{two B source code} \label{appendix:two-b-src}
 \begin{minted}{python}
 from .one_a import *
 from sympy import Matrix, simplify, exp, symbols, integrate
@@ -47,11 +47,6 @@ def zero_state(A: Matrix, B: Matrix):
     integrand = get_integrand(A,B)
     t, tau = symbols('t, ' + r'\tau')
     return simplify(integrate(integrand, (tau, 0, t)))
-\end{minted}
-
-\section{Three source code} \label{appendix:three-src}
-\begin{minted}{python}
-
 \end{minted}
 
 

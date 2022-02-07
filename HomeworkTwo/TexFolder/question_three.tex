@@ -13,7 +13,6 @@
       \begin{equation}
         \Delta(\lambda) = (\lambda I - A) = 0
       \end{equation}
-      Add manual calculations
       \begin{equation}
         \lambda = -1, -2, -3
       \end{equation}
@@ -63,17 +62,17 @@
       \begin{equation}
         A^{-1} =
         \beta_0I + \beta_1A + \beta_2A^2 =
-        -1.8333I - A - 0.1667A =
+        -1.8333I - A - 0.1667A^2 =
         \begin{bmatrix}
-          4 & 7 & 0 \\
-          -2.333 & 4.1667 & 0 \\
-          0 & 0 & 1.66668
+          1 & 3 & 0 \\
+          -1 & -2.5 & 0 \\
+          0 & 0 & 0.33333\\
         \end{bmatrix}
       \end{equation}
-      {\LARGE \color{red} TODO: Fix this wrong answer}
+      This last step was accomplished with python performing the math
     \end{itemize}
   \item Obtain $e^{At}$ using one of the three mentioned methods in Problem 1 \\
-    Using the laplace transform
+    I am using using the laplace transform method.
     \begin{equation}
 \mathscr{L}^{-1}\Big ((sI-A)^{-1}\Big ) = \left[\begin{matrix}\left(4 - 3 e^{t}\right) e^{- 2 t} \theta\left(t\right) & 6 \left(1 - e^{t}\right) e^{- 2 t} \theta\left(t\right) & 0\\2 \left(e^{t} - 1\right) e^{- 2 t} \theta\left(t\right) & \left(4 e^{t} - 3\right) e^{- 2 t} \theta\left(t\right) & 0\\0 & 0 & e^{- 3 t} \theta\left(t\right)\end{matrix}\right]\end{equation}
 
