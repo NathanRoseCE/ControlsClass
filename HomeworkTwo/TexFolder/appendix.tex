@@ -1,7 +1,7 @@
 \appendix
 
-\section{Appendix}
-\subsection{One A source code} \label{appendix:one-a-src}
+% \section{Appendix}
+\section{One A source code} \label{appendix:one-a-src}
 \begin{minted}{python}
 import numpy as np
 import sympy
@@ -19,4 +19,41 @@ def STM_laplace_inverse(A: Matrix):
     )
 \end{minted}
 
-{\LARGE \color{red} TODO: Create custom inverse-laplace-transform function}
+\section{Two A source code} \label{appendix:two-a-src}
+\begin{minted}{python}
+from .one_a import *
+from sympy import Matrix, simplify
+
+
+def zero_input_equation(A: Matrix, x_0: Matrix):
+    stm = STM_laplace_inverse(A) #from problem 1 
+    return simplify(stm * x_0)
+
+
+\end{minted}
+
+\section{Three B source code} \label{appendix:two-b-src}
+\begin{minted}{python}
+from .one_a import *
+from sympy import Matrix, simplify, exp, symbols, integrate
+
+def get_integrand(A: Matrix, B: Matrix):
+    stm = STM_laplace_inverse(A) # from problem 1
+    t, tau = symbols('t, ' + r'\tau')
+    u = exp(2*t)
+    return simplify((stm * B * u)).subs(t, tau)
+    
+def zero_state(A: Matrix, B: Matrix):
+    integrand = get_integrand(A,B)
+    t, tau = symbols('t, ' + r'\tau')
+    return simplify(integrate(integrand, (tau, 0, t)))
+\end{minted}
+
+\section{Three source code} \label{appendix:three-src}
+\begin{minted}{python}
+
+\end{minted}
+
+
+All of this is available online on \href{https://github.com/NathanRoseCE/ControlsClass}{github}(its latex +
+python)

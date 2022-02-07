@@ -1,12 +1,13 @@
 from .one_a import *
 from sympy import Matrix, simplify, exp, symbols, integrate
 
-
-def zero_state(A: Matrix, B: Matrix):
-    stm = STM_laplace_inverse(A)
+def get_integrand(A: Matrix, B: Matrix):
+    stm = STM_laplace_inverse(A) # from problem 1
     t, tau = symbols('t, ' + r'\tau')
     u = exp(2*t)
-    integrand = simplify((stm * B * u)).subs(t, tau)
+    return simplify((stm * B * u)).subs(t, tau)
+    
+def zero_state(A: Matrix, B: Matrix):
+    integrand = get_integrand(A,B)
+    t, tau = symbols('t, ' + r'\tau')
     return simplify(integrate(integrand, (tau, 0, t)))
-
-

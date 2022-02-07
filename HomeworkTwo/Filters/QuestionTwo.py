@@ -41,10 +41,13 @@ class Two_B(TemplateFilter):
           equation = inst.filter(
                "eq", r"x_{zs}(t) = \int_{t_0}^t \Phi(t,\tau)B(\tau)u(\tau)d\tau"
           )
-          solved_equation = inst.filter(
-               "eq", latex(zero_state(A, B))
+          equation_subbed = inst.filter(
+               "eq", r"x_{zs}(t) = \int_0^t" + latex(get_integrand(A,B)) + r"d\tau"
           )
-          return equation + solved_equation
+          solved_equation = inst.filter(
+               "eq", r"x_{zs}(t) = " + latex(zero_state(A, B))
+          )
+          return equation + equation_subbed + solved_equation
 
 class Two_C(TemplateFilter):
      name = "two_c"

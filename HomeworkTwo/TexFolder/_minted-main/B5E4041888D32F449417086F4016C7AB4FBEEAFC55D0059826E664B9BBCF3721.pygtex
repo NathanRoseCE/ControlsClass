@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{.one\PYGZus{}a} \PYG{k+kn}{import} \PYG{o}{*}
+\PYG{k+kn}{from} \PYG{n+nn}{sympy} \PYG{k+kn}{import} \PYG{n}{Matrix}\PYG{p}{,} \PYG{n}{simplify}
+
+
+\PYG{k}{def} \PYG{n+nf}{zero\PYGZus{}input\PYGZus{}equation}\PYG{p}{(}\PYG{n}{A}\PYG{p}{:} \PYG{n}{Matrix}\PYG{p}{,} \PYG{n}{x\PYGZus{}0}\PYG{p}{:} \PYG{n}{Matrix}\PYG{p}{):}
+    \PYG{n}{stm} \PYG{o}{=} \PYG{n}{STM\PYGZus{}laplace\PYGZus{}inverse}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{}from problem 1}
+    \PYG{k}{return} \PYG{n}{simplify}\PYG{p}{(}\PYG{n}{stm} \PYG{o}{*} \PYG{n}{x\PYGZus{}0}\PYG{p}{)}
+\end{Verbatim}
