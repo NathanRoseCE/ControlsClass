@@ -13,33 +13,31 @@
     Eigenvalues are: $\lambda = \PY{  one_system["A"] | eig_vals | complexCsv }$
     This is not the simple case... joy
     \begin{equation}
-      (\lambda_iI -A)v_i = 0
+      (A -\lambda_iI)v_i = 0
     \end{equation}
     \begin{equation}
       \begin{bmatrix}
-        1 & -1 \\
-        1 &  -1
+        -1 & 1 \\
+        -1 & 1
       \end{bmatrix}v_i = 0
     \end{equation}
-    only one solution :/
-
-    
+    only one solution :/    
     \begin{equation}
       0 = 
       \begin{bmatrix}
-        1 & -1 \\
-        1 &  -1
+        -1 & 1 \\
+        -1 & 1
       \end{bmatrix}^2v_2 =
       \begin{bmatrix}
-        1 & 1 \\
-        1 & 1
+        0 & 0 \\
+        0 & 0
       \end{bmatrix}v_2
     \end{equation}
     \begin{equation}
       v_2 =
       \begin{bmatrix}
         1 \\
-        -1
+        0
       \end{bmatrix}
     \end{equation}
     \begin{equation}
@@ -49,31 +47,104 @@
         1 &  -1
       \end{bmatrix}v_2 = 
       \begin{bmatrix}
-        1 & -1 \\
-        1 &  -1
+        -1 & 1 \\
+        -1 & 1
       \end{bmatrix}
       \begin{bmatrix}
         1 \\
-        -1
+        0
       \end{bmatrix} = 
       \begin{bmatrix}
-        2 \\
-        2
+        -1 \\
+        -1
       \end{bmatrix}
     \end{equation}
     \begin{equation}
       V =
       \begin{bmatrix}
-        2 &  1 \\
-        2 & -1
+        -1 & 1 \\
+        -1 & 0
       \end{bmatrix},
-      \Lambda =
+      J =
       \begin{bmatrix}
         -1 &  1 \\
          0 & -1
       \end{bmatrix}
     \end{equation}
-    \PY{ 'getting the wrong $V$ matrix' | TODO }
+    \begin{equation}
+      \Lambda =
+      \begin{bmatrix}
+        -1 &  0 \\
+         0 & -1
+      \end{bmatrix},
+      N =
+      \begin{bmatrix}
+        0 & 1 \\
+        0 & 0
+      \end{bmatrix}
+    \end{equation}
+    \begin{equation}
+      e^{\Lambda t} =
+      \begin{bmatrix}
+        e^{-t} & 0 \\
+        0 & e^{-t}
+      \end{bmatrix}
+    \end{equation}
+    \begin{equation}
+      e^{N t} =
+      \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+      \end{bmatrix} +
+      \begin{bmatrix}
+        0 & t \\
+        0 & 0
+      \end{bmatrix} =
+      \begin{bmatrix}
+        1 & t \\
+        0 & 1
+      \end{bmatrix}
+    \end{equation}
+    \begin{equation}
+      Ve^{\Lambda t}e^{Nt}V^{-1} =
+      \begin{bmatrix}
+        -1 & 1 \\
+        -1 & 0
+      \end{bmatrix}
+      \begin{bmatrix}
+        e^{-t} & 0 \\
+        0 & e^{-t}
+      \end{bmatrix}
+      \begin{bmatrix}
+        1 & t \\
+        0 & 1
+      \end{bmatrix}
+      \begin{bmatrix}
+        -1 & 1 \\
+        -1 & 0
+      \end{bmatrix}^{-1}
+    \end{equation}
+    \begin{equation}
+      Ve^{\Lambda t}e^{Nt}V^{-1} =
+      \begin{bmatrix}
+        -1 & 1 \\
+        -1 & 0
+      \end{bmatrix}
+      \begin{bmatrix}
+        e^{-t} & te^{-t} \\
+        0 & e^{-t}
+      \end{bmatrix}
+      \begin{bmatrix}
+        -1 & 1 \\
+        -1 & 0
+      \end{bmatrix}^{-1}
+    \end{equation}
+    insert some python to solve this multiplication
+    \begin{equation}
+      \Phi(t) = Ve^{\Lambda t}e^{Nt}V^{-1} =
+      '\left[\begin{matrix}e^{-t} \left(1 - t\right) & e^{-t} t\\- e^{-t} t & e^{-t} \left(t + 1\right)\end{matrix}\right]'
+    \end{equation}
+    
   \item Via the Cayley-Hamilton theorem \\
     This will be done by using the Cayley-hamilton theorem to solve for $e^{At}$ then via equation 22 it is the
     STM
