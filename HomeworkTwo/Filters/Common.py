@@ -336,3 +336,5 @@ class EigenValues(TemplateFilter):
                for _ in range(multiplicity)
           ]
           return eigenvalues
+
+

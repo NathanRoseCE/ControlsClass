@@ -1,6 +1,7 @@
 \appendix
 
 % \section{Appendix}
+\vspace{2cm}
 \section{One A source code} \label{appendix:one-a-src}
 \begin{minted}{python}
 import numpy as np
@@ -32,7 +33,7 @@ def zero_input_equation(A: Matrix, x_0: Matrix):
 
 \end{minted}
 
-\section{two B source code} \label{appendix:two-b-src}
+\section{Two B source code} \label{appendix:two-b-src}
 \begin{minted}{python}
 from .one_a import *
 from sympy import Matrix, simplify, exp, symbols, integrate
@@ -49,6 +50,60 @@ def zero_state(A: Matrix, B: Matrix):
     return simplify(integrate(integrand, (tau, 0, t)))
 \end{minted}
 
+\section{Three A source code} \label{appendix:two-b-src}
+\begin{minted}{python}
+from typing import Iterable, Tuple
+from sympy import Matrix, latex, eye
 
-All of this is available online on \href{https://github.com/NathanRoseCE/ControlsClass}{github}(its latex +
-python)
+
+def beta_equation_general() -> str:
+    return r"f(\lambda) = \beta_0 + \beta_1\lambda + \beta_2\lambda^2"
+                       
+def beta_equation(eig_vals: list) -> Tuple[Matrix,Matrix]:
+    """
+    gets the matrix form of the equations above for a 3x3 and given eigenvalues.
+    Assumes no multiplicity and f is inverse
+    """
+    values = []
+    system = []
+    for eig_val in eig_vals:
+        values.append(
+            pow(eig_val, -1)
+        )
+        system.append(
+            [pow(eig_val, i) for i in range(len(eig_vals))]
+        )
+    return Matrix(values), Matrix(system)
+
+def bmatrix() -> str:
+    return r"\begin{bmatrix}\beta_0 \\ \beta_1 \\ \beta_2 \end{bmatrix}"
+
+def beta_equation_str(eig_vals) -> str:
+    values, system = beta_equation(eig_vals)
+    return (f"{latex(values)} = {latex(system)}" + r"^{-1}" +
+            bmatrix()
+            )
+def solved_beta_equation_str(eig_vals) -> str:
+    values, system = beta_equation(eig_vals)
+    solved = system.inv() * values
+    return (
+        bmatrix() + f" = {latex(solved)}" 
+    )
+
+def beta_values(eig_vals) -> Iterable[float]:
+    values, system = beta_equation(eig_vals)
+    solved = system.inv() * values
+    return [solved[i, 0] for i in range(3)]
+
+def final_answer(eig_vals, A) -> str:
+    A = Matrix(A)
+    I = eye(A.shape[0])
+    beta_0, beta_1, beta_2 = beta_values(eig_vals)
+    return (beta_0*I) + (beta_1*A) + (beta_2*A*A)
+\end{minted}
+
+
+
+Disclaimer: This is just a few relevant fragments of the source code, as the entire code is a complicated system
+that takes these fragments and automatically renders them into the final pdf. However all of this is available
+online on \href{https://github.com/NathanRoseCE/ControlsClass}{github}(its latex + python)

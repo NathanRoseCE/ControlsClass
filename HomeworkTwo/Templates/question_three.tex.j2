@@ -3,69 +3,13 @@
     A = \PY{ three_A | bmatrix }\end{equation}
   \begin{enumerate}
   \item Find $A^{-1}$ using the Cayley-Hamilton theorem \\
-    \begin{itemize}
-    \item solve for eigenvalues \\
-      \begin{equation}
-        \Delta(\lambda) = (\lambda I - A) = 0
-      \end{equation}
-      \begin{equation}
-        \lambda = \PY{ three_A | eig_vals | complexCsv}
-      \end{equation}
-    \item solve for $\beta_0$, $\beta_1$ $\beta_2$\\
-      \begin{equation}
-        f(\lambda) = \beta_0 + \beta_1\lambda + \beta_2\lambda^2
-      \end{equation}
-      \begin{equation}
-        -1 = \beta_0 - \beta_1 + \beta_2
-      \end{equation}
-      \begin{equation}
-        -\frac 1 2 = \beta_0 - 2\beta_1 + 4\beta_2
-      \end{equation}
-      \begin{equation}
-        -\frac 1 3 = \beta_0 - 3\beta_1 + 9\beta_2
-      \end{equation}
-      \begin{equation}
-        \begin{bmatrix}
-          1 & -1 & 1 \\
-          1 & -2 & 4 \\
-          1 & -3 & 9
-        \end{bmatrix}^{-1}
-        \begin{bmatrix}
-          -1 \\
-          -\frac 1 2 \\
-          -\frac 1 3
-        \end{bmatrix} =
-        \begin{bmatrix}
-          \beta_1 \\
-          \beta_2 \\
-          \beta_3 
-        \end{bmatrix}
-      \end{equation}
-      \begin{equation}
-        \begin{bmatrix}
-          \beta_1 \\
-          \beta_2 \\
-          \beta_3 
-        \end{bmatrix} = 
-        \begin{bmatrix}
-          -1.83333 \\
-          -1 \\
-          -0.16667
-        \end{bmatrix}
-      \end{equation}
-    \item solve for $A^{-1}$
-      \begin{equation}
-        A^{-1} =
-        \beta_0I + \beta_1A + \beta_2A^2 =
-        -1.8333I - A - 0.1667A^2 =
-        \begin{bmatrix}
-          1 & 3 & 0 \\
-          -1 & -2.5 & 0 \\
-          0 & 0 & 0.33333\\
-        \end{bmatrix}
-      \end{equation}
-      This last step was accomplished with python performing the math
-    \end{itemize}
+    \begin{equation}
+      \Delta(\lambda) = (\lambda I - A) = 0
+    \end{equation}
+    \begin{equation}
+      \lambda = \PY{ three_A | eig_vals | complexCsv}
+    \end{equation}
+    \PY{ three_A | three_inverse }
   \item Obtain $e^{At}$ using one of the three mentioned methods in Problem 1 \\
     I am using using the laplace transform method.
     \PY{ three_A | three_laplace_inv }
