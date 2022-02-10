@@ -1,7 +1,7 @@
 \item Let the STM of the system $\dot {\bar x}(t) = A\bar x(t)$, where $A$ is a constant matrix, be
   $\Phi (t, t_0)$. Also, let the STM of the system $\dot {\bar z}(t) = -A^T\bar Z(t)$, where $A^T$ is the
   transpose of $A$, be $\Theta(t, t_0)$. Use the properties of the STM on Slide 39 to show that
-  $\Theta(t, t_0) = \Phi^T(t, t_0)$. \\
+  $\Theta(t, t_0) = \Phi^T(t_0, t)$. \\
   \begin{equation}
     \Theta(t, t_0) = \Phi^T(t, t_0)
   \end{equation}
@@ -12,12 +12,9 @@
     \Theta(t, t_0) = \psi^{-1}(t_0)^T\psi(t)^T
   \end{equation}
   \begin{equation}
-    \Theta(t, t_0) = (\psi(t_0)^T\psi^{-1}(t)^T)^{-1}
+    \Theta(t, t_0) = \psi(t_0)^T\psi^{-1}(t)^T
   \end{equation}
   \begin{equation}
-    \Theta(t, t_0) = \Theta(t_0, t)^{-1}
-  \end{equation}
-  \begin{equation}
-    \Theta(t, t_0) = \Theta(t, t_0)
+    \Theta(t, t_0) = \Theta(t_0, t)
   \end{equation}
   
