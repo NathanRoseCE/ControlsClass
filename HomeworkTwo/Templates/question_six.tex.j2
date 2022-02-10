@@ -1,4 +1,7 @@
-\item Give the algebraic and geometric multiplicities of the repeated eigenvalue and find $e^{3t}$ for the matrices
+\item Give the algebraic and geometric multiplicities of the repeated eigenvalue and find $e^{Jt}$ for the matrices
+  \begin{equation}
+    e^{Jt} = e^{(\Lambda + N)t} = e^{\Lambda t}e^{Nt}
+  \end{equation}
   below.
   \begin{enumerate}
   \item $J = \begin{bmatrix}
@@ -8,6 +11,22 @@
     algebraic multiplicity: 2
     
     geometric multiplicity: 2
+    \begin{equation}
+      e^{Jt} =
+      \begin{bmatrix}
+        e^{\lambda t} & 0 \\
+        0 & e^{\lambda t}
+      \end{bmatrix}
+      \begin{bmatrix}
+        1 & t \\
+        0 & 1
+      \end{bmatrix} =
+      \begin{bmatrix}
+        e^{\lambda t} & te^{\lambda t}\\
+        0 & e^{\lambda t}
+      \end{bmatrix}
+    \end{equation}
+      
     
   \item $J = \begin{bmatrix}
       \lambda & 1 & 0\\
@@ -17,6 +36,24 @@
     algebraic multiplicity: 3
     
     geometric multiplicity: 3
+    \begin{equation}
+      e^{Jt} =
+      \begin{bmatrix}
+        e^{\lambda t} & 0 & 0\\
+        0 & e^{\lambda t} & 0\\
+        0 & 0 & e^{\lambda t}
+      \end{bmatrix}
+      \begin{bmatrix}
+        1 & t & t^2\\
+        0 & 1 & t  \\
+        0 & 0 & 1
+      \end{bmatrix} =
+      \begin{bmatrix}
+        e^{\lambda t} & te^{\lambda t} & t^2e^{\lambda t}\\
+        0 & e^{\lambda t} & te^{\lambda t}\\
+        0 & 0 & e^{\lambda t}
+      \end{bmatrix}
+    \end{equation}
     
   \item $J = \begin{bmatrix}
       \lambda & 1 & 0\\
@@ -26,4 +63,22 @@
     algebraic multiplicity: 3
     
     geometric multiplicity: 2
+    \begin{equation}
+      e^{Jt} =
+      \begin{bmatrix}
+        e^{\lambda t} & 0 & 0\\
+        0 & e^{\lambda t} & 0\\
+        0 & 0 & e^{\lambda t}
+      \end{bmatrix}
+      \begin{bmatrix}
+        1 & t & 0\\
+        0 & 1 & 0\\
+        0 & 0 & 1
+      \end{bmatrix} =
+      \begin{bmatrix}
+        e^{\lambda t} & te^{\lambda t} & 0\\
+        0 & e^{\lambda t} & 0\\
+        0 & 0 & e^{\lambda t}
+      \end{bmatrix}
+    \end{equation}
   \end{enumerate}
