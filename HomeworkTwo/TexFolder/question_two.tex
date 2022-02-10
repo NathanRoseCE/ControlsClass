@@ -15,9 +15,9 @@ x(t) =\left[\begin{matrix}\left(10 - 9 t\right) e^{- t} \theta\left(t\right)\\\l
     \begin{equation}
 x_{zs}(t) = \int_{t_0}^t \Phi(t,\tau)B(\tau)u(\tau)d\tau\end{equation}
 \begin{equation}
-x_{zs}(t) = \int_0^t\left[\begin{matrix}\left(3 - 2 \tau\right) e^{\tau} \theta\left(\tau\right)\\\left(1 - 2 \tau\right) e^{\tau} \theta\left(\tau\right)\end{matrix}\right]d\tau\end{equation}
+x_{zs}(t) = \int_0^t\left[\begin{matrix}\left(2 \tau - 2 t + 3\right) e^{3 \tau - t} \theta\left(- \tau + t\right)\\\left(2 \tau - 2 t + 1\right) e^{3 \tau - t} \theta\left(- \tau + t\right)\end{matrix}\right]d\tau\end{equation}
 \begin{equation}
-x_{zs}(t) = \left[\begin{matrix}\left(- 2 t e^{t} + 5 e^{t} - 5\right) \theta\left(t\right)\\\left(- 2 t e^{t} + 3 e^{t} - 3\right) \theta\left(t\right)\end{matrix}\right]\end{equation}
+x_{zs}(t) = \left[\begin{matrix}\frac{\left(6 t + 7 e^{3 t} - 7\right) e^{- t} \theta\left(t\right)}{9}\\\frac{\left(6 t + e^{3 t} - 1\right) e^{- t} \theta\left(t\right)}{9}\end{matrix}\right]\end{equation}
 
   \item Obtain the total solution $\bar x(t)$ for the initial conditions and input in \ref{2-a} and
     \ref{2-b}.\\
@@ -25,7 +25,7 @@ x_{zs}(t) = \left[\begin{matrix}\left(- 2 t e^{t} + 5 e^{t} - 5\right) \theta\le
     Because this is an LTI system, the super-position property applies and the results of both of these systems
     can be added together to produce a system with initial state of \ref{2-a} and the input of \ref{2-b}
     \begin{equation}
-x(t) = \left[\begin{matrix}\left(- 9 t - \left(2 t e^{t} - 5 e^{t} + 5\right) e^{t} + 10\right) e^{- t} \theta\left(t\right)\\\left(- 9 t - \left(2 t e^{t} - 3 e^{t} + 3\right) e^{t} + 1\right) e^{- t} \theta\left(t\right)\end{matrix}\right]\end{equation}
+x(t) = \left[\begin{matrix}\frac{\left(- 75 t + 7 e^{3 t} + 83\right) e^{- t} \theta\left(t\right)}{9}\\\frac{\left(- 75 t + e^{3 t} + 8\right) e^{- t} \theta\left(t\right)}{9}\end{matrix}\right]\end{equation}
 
     
   \end{enumerate}
