@@ -1,0 +1,25 @@
+\item In the LTI system described for $\dot {\bar x}(t) = A\bar x$ with
+  $A = \begin{bmatrix}
+0 & 1 & 0\\
+0 & 0 & 1\\
+-1 & -3 & -3
+\end{bmatrix}
+$
+  \begin{enumerate}
+  \item Obtain all eigenvalues and eigenvectors of $A$\label{1-a}\\
+    \begin{equation}
+  \vert \lambda I - A \vert = 0
+\end{equation}
+\begin{equation}
+  det(\left[\begin{matrix}\lambda & -1 & 0\\0 & \lambda & -1\\1 & 3 & \lambda + 3\end{matrix}\right]) = \lambda^{3} + 3 \lambda^{2} + 3 \lambda + 1 = 0
+\end{equation}
+\begin{equation}
+  \lambda = -1, -1, -1
+\end{equation}
+
+  \item Use the eigenvectors in part \ref{1-a} to obtain the  m odal matrix $V$ and Jordan Form $J$\\
+    Solving for eigenvalue(s) of -1, with a multiplicity of 3\begin{equation}  (A - \lambda i)^3x_0 = 0\end{equation}\begin{equation}  \left[\begin{matrix}0 & 0 & 0\\0 & 0 & 0\\0 & 0 & 0\end{matrix}\right]\left[\begin{matrix}x_{0}\\x_{1}\\x_{2}\end{matrix}\right] = 0\end{equation}\begin{equation}  x_0 = \left[\begin{matrix}1\\0\\0\end{matrix}\right]\end{equation}\begin{equation}  (A - \lambda i)^2\left[\begin{matrix}1\\0\\0\end{matrix}\right] = x_1\end{equation}\begin{equation}\left[\begin{matrix}1 & 2 & 1\\-1 & -2 & -1\\1 & 2 & 1\end{matrix}\right]\left[\begin{matrix}1\\0\\0\end{matrix}\right] = x_1\end{equation}\begin{equation}  x_1 = \left[\begin{matrix}1\\-1\\1\end{matrix}\right]\end{equation}\begin{equation}  (A - \lambda i)^1\left[\begin{matrix}1\\-1\\1\end{matrix}\right] = x_2\end{equation}\begin{equation}\left[\begin{matrix}-1 & -1 & 0\\0 & -1 & -1\\1 & 3 & 2\end{matrix}\right]\left[\begin{matrix}1\\-1\\1\end{matrix}\right] = x_2\end{equation}\begin{equation}  x_2 = \left[\begin{matrix}0\\0\\0\end{matrix}\right]\end{equation}
+\begin{equation}
+  V = \left[\begin{matrix}1 & 1 & 1\\-1 & 0 & 0\\1 & -1 & 0\end{matrix}\right]\end{equation}
+\begin{equation}  J = V^{-1}AV = \left[\begin{matrix}0 & -1 & 0\\0 & -1 & -1\\1 & 2 & 1\end{matrix}\right]\left[\begin{matrix}0 & 1 & 0\\0 & 0 & 1\\-1 & -3 & -3\end{matrix}\right]\left[\begin{matrix}1 & 1 & 1\\-1 & 0 & 0\\1 & -1 & 0\end{matrix}\right]\end{equation}\begin{equation}  J = \left[\begin{matrix}-1 & 1 & 0\\0 & -1 & 1\\0 & 0 & -1\end{matrix}\right]\end{equation}
+  \end{enumerate}
