@@ -58,8 +58,8 @@ def test_eigenvector_3_by_3_repeated():
     V = np.array(modal).astype(np.float64)
     A = np.array(A).astype(np.float64)
     
-    print(V)
-    print(P.inv() * A  * P)
+    print(f"V_cal = {V}")
+    print(f"V_cor = {np.array(P).astype(np.float64)}")
     print(np.linalg.inv(V) @ A @ V)
     assert (np.allclose(np.linalg.inv(V) @ A @ V, np.array([[3,1,0], [0,3,1], [0,0,3]])))
     

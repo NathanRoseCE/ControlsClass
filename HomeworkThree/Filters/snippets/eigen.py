@@ -85,11 +85,82 @@ def _handle_multiplicity_eig(A: Matrix, eig_val: complex, multiplicity: int) -> 
             work += r"\end{equation}"
             result_vec = Matrix([[0] for _ in range(left.shape[0])])
             result_vec[0,0] = 1
-            result_vec[2,0] = -1
             eig_vectors.append(result_vec)
             work += r"\begin{equation}"
             work += f"  x_{i} = {latex(result_vec)}"
             work += r"\end{equation}"
+        elif i == 0:
+            work += r"\begin{equation}"
+            work += f"  {latex(left)}{latex(eig_vec)} = 0"
+            work += r"\end{equation}"
+            work += r"\begin{equation}"
+            work += f"  {latex(left)}{latex(eig_vec)} = 0"
+            work += r"\end{equation}"
+            work += r"\begin{equation}"
+            work += f"  {latex(left)}{latex(eig_vec)} = 0"
+            work += r"\end{equation}"
+            result = sympy.solve(left*eig_vec, symbols, particular=True)
+            result_vec = sympy.zeros(len(symbols), 1)
+            print(left*eig_vec)
+            print(symbols)
+            print(result)
+            for j, x_i in enumerate(symbols):
+                if x_i in result:
+                    result_vec[j, 0] = result[x_i]
+            eig_vectors.append(result_vec)
+            work += r"\begin{equation}"
+            work += f"  x_{i} = {latex(result_vec)}"
+            work += r"\end{equation}"
+        else:
+            previous_eig_vector = eig_vectors[-1]
+            work += r"\begin{equation}"
+            work += r"  (A - \lambda i)^" + f"{power}{latex(previous_eig_vector)} = x_{i}"
+            work += r"\end{equation}"
+            work += r"\begin{equation}"
+            work += f"{latex(left)}{latex(previous_eig_vector)} = x_{i}"
+            work += r"\end{equation}"
+            result = sympy.solve(left*previous_eig_vector - eig_vec, symbols, particular=True)
+            result_vec = sympy.zeros(len(symbols), 1)
+            for j, x_i in enumerate(symbols):
+                result_vec[j, 0] = result[x_i]
+            eig_vectors.append(result_vec)
+            work += r"\begin{equation}"
+            work += f"  x_{i} = {latex(result_vec)}"
+            work += r"\end{equation}"
+    inst = TemplateCore.instance()
+    return (work, reversed(eig_vectors))
+def _handle_multiplicity_eig_two(A: Matrix, eig_val: complex, multiplicity: int) -> Tuple[str, Iterable[Matrix]]:
+    """
+    This function handles one group of eigenvalues with the same values
+    returns the work and the 
+    """
+    vector_symbols = ", ".join([f'x_{i}' for i in range(A.shape[0])])
+    symbols = list(sympy.symbols(vector_symbols))
+    eig_vectors = []
+    a_minus_lambda_i = simplify(A - (eye(A.shape[0])*eig_val))
+    work = f"Solving for eigenvalue(s) of {eig_val}, with a multiplicity of {multiplicity}"
+    print(work)
+    print(f"A = {A}")
+    print(f"A-li = {a_minus_lambda_i}")
+    for i in range(multiplicity):
+        power = i+1
+        left = a_minus_lambda_i ** power
+        print(f"{power} - {left}")
+        eig_vec = Matrix([[x_i] for x_i in symbols])
+        if np.all(np.matrix(left) == np.matrix(zeros(*left.shape))):
+            work += r"\begin{equation}"
+            work += r"  (A - \lambda i)^" + f"{power}x_{i} = 0"
+            work += r"\end{equation}"
+            work += r"\begin{equation}"
+            work += f"  {latex(left)}{latex(eig_vec)} = 0"
+            work += r"\end{equation}"
+            result_vec = Matrix([[0] for _ in range(left.shape[0])])
+            result_vec[0,0] = 1
+            eig_vectors.append(result_vec)
+            work += r"\begin{equation}"
+            work += f"  x_{i} = {latex(result_vec)}"
+            work += r"\end{equation}"
+            raise ValueError("uhhh")
         elif i == 0:
             work += r"\begin{equation}"
             work += f"  {latex(left)}{latex(eig_vec)} = 0"
