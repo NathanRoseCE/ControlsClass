@@ -7,7 +7,65 @@
     \end{bmatrix}
   \end{equation}
   \begin{enumerate}
-  \item Obtain the controllable canoncical form
+  \item Obtain the controllable canoncical form \\
+    \begin{equation}
+      \frac 1 {s+2}
+      \begin{bmatrix}
+        s & 0 \\
+        2 & s+2
+      \end{bmatrix}
+    \end{equation}
+    \begin{equation}
+      \dot x =
+      \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+      \end{bmatrix}x +
+      \begin{bmatrix}
+        1 & 0 \\
+        0 & 1 
+      \end{bmatrix}u
+    \end{equation}
+    \begin{equation}
+      b_0 =
+      \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+      \end{bmatrix}
+    \end{equation}
+    \begin{equation}
+      y =
+      \big (
+      \begin{bmatrix}
+        0 & 0 \\
+        2 & 2
+      \end{bmatrix} - 
+      \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+      \end{bmatrix}
+      \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+      \end{bmatrix}
+      \big )x +
+      \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+      \end{bmatrix}u
+    \end{equation}
+    \begin{equation}
+      y =
+      \begin{bmatrix}
+        -1 & 0 \\
+        2 & 1
+      \end{bmatrix}x +
+      \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+      \end{bmatrix}u
+    \end{equation}
+    {\LARGE \color{red} TODO: check this}
   \item obtain the observable canonical form
   \item show that the realization in (a) and (b) are dual
   \end{enumerate}

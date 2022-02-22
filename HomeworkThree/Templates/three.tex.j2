@@ -7,10 +7,45 @@
   \end{equation}
   where $a > 0$ is a constant parameter of the system and $c > 0$ is the torsional friction coefficient
   \begin{enumerate}
-  \item Study BIBS stability of the system 
+  \item Study BIBS stability of the system\\
+    \begin{equation}
+      \begin{bmatrix}
+        \dot x_1 \\
+        \dot x_2 
+      \end{bmatrix} =
+      \begin{bmatrix}
+        0 & 1 \\
+        -a & -c
+      \end{bmatrix}
+      \begin{bmatrix}
+        x_1 \\
+        x_2
+      \end{bmatrix}
+    \end{equation}
+    This allows you to calculate the eigenvalues with:
+    \begin{equation}
+      \Delta = \vert \lambda I - A \vert = 0
+    \end{equation}
+    \begin{equation}
+      0 =
+      \begin{vmatrix}
+        \lambda & -1 \\
+        a & \lambda + c
+      \end{vmatrix} =
+      \lambda^2 + c\lambda + a
+    \end{equation}
+    \begin{equation}
+      \lambda = \frac{-c \pm \sqrt{c^2 - 4a}}{2}
+    \end{equation}
+    the system will be stable if the eigenvalues described by this equation are less then 0(or equal to 0 if
+    the eigenvalues produce linearly independent eigenvectors)
   \item Consider the quadratic Lyapunov functino $V = \bar x^T P \bar x$ with
     $P = \begin{bmatrix} \frac a 2 & 0 \\ 0 & \frac 1 2\end{bmatrix}$. What can be said about the stability of
     the system based on this choice of the Lyapunov function?
   \item What can be said about the stability of the system based on the analysis of b) and c)?
-  \item Study BIBS stability of teh system when $c=0$
+  \item Study BIBS stability of the system when $c=0$ \\
+    \begin{equation}
+      \lambda = \pm \sqrt{a}j
+    \end{equation}
+    if the eigenvectors are linearly independent, then the system is lyapunov stable
   \end{enumerate}

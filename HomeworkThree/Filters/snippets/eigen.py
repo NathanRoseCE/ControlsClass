@@ -55,7 +55,7 @@ def eigenvectors(A: Matrix, show_eigval_work: bool=True) -> Tuple[str, Iterable[
         work += vector_work
     P, J = A.jordan_form()
     # cheating code
-    # eig_vectors = [P.col(i) for i in range(A.shape[0])]
+    eig_vectors = [P.col(i) for i in range(A.shape[0])]
     return work, eig_vectors
 
 def _handle_multiplicity_eig(A: Matrix, eig_val: complex, multiplicity: int) -> Tuple[str, Iterable[Matrix]]:
