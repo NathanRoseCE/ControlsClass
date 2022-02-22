@@ -18,8 +18,8 @@
     \begin{equation}
       \dot x =
       \begin{bmatrix}
-        1 & 0 \\
-        0 & 1
+        -2 & 0 \\
+        0 & -2
       \end{bmatrix}x +
       \begin{bmatrix}
         1 & 0 \\
@@ -27,10 +27,17 @@
       \end{bmatrix}u
     \end{equation}
     \begin{equation}
-      b_0 =
+      N_0 =
       \begin{bmatrix}
         1 & 0 \\
         0 & 1
+      \end{bmatrix}
+    \end{equation}
+    \begin{equation}
+      N_1 =
+      \begin{bmatrix}
+        0 & 0 \\
+        2 & 2
       \end{bmatrix}
     \end{equation}
     \begin{equation}
@@ -43,11 +50,7 @@
       \begin{bmatrix}
         1 & 0 \\
         0 & 1
-      \end{bmatrix}
-      \begin{bmatrix}
-        1 & 0 \\
-        0 & 1
-      \end{bmatrix}
+      \end{bmatrix}2
       \big )x +
       \begin{bmatrix}
         1 & 0 \\
@@ -57,8 +60,8 @@
     \begin{equation}
       y =
       \begin{bmatrix}
-        -1 & 0 \\
-        2 & 1
+        -2 & 0 \\
+        2 & 0
       \end{bmatrix}x +
       \begin{bmatrix}
         1 & 0 \\
@@ -66,6 +69,78 @@
       \end{bmatrix}u
     \end{equation}
     \PY{ 'check this' | TODO }
-  \item obtain the observable canonical form
-  \item show that the realization in (a) and (b) are dual
+  \item obtain the observable canonical form\\
+    \begin{equation}
+      \frac 1 {s+2}
+      \begin{bmatrix}
+        s & 0 \\
+        2 & s+2
+      \end{bmatrix}
+    \end{equation}
+    \begin{equation}
+      N_0 =
+      \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+      \end{bmatrix}
+    \end{equation}
+    \begin{equation}
+      N_1 =
+      \begin{bmatrix}
+        0 & 0 \\
+        2 & 2
+      \end{bmatrix}
+    \end{equation}
+    \begin{equation}
+      \dot x =
+      \begin{bmatrix}
+        2 & 0 \\
+        0 & 2
+      \end{bmatrix}x +
+      \big (
+      \begin{bmatrix}
+        0 & 0 \\
+        2 & 2
+      \end{bmatrix} -
+      \begin{bmatrix}
+        2 & 0 \\
+        0 & 2
+      \end{bmatrix}
+      \big )u
+    \end{equation}
+    \begin{equation}
+      \dot x =
+      \begin{bmatrix}
+        2 & 0 \\
+        0 & 2
+      \end{bmatrix}x +
+      \begin{bmatrix}
+        -2 & 0 \\
+        2 & 0
+      \end{bmatrix}u
+    \end{equation}
+    \begin{equation}
+      y =
+      \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+      \end{bmatrix}x +
+      \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+      \end{bmatrix}
+    \end{equation}
+  \item show that the realization in (a) and (b) are dual\\
+    as per
+    \begin{equation}
+      \begin{bmatrix}
+        A & B \\
+        C & D
+      \end{bmatrix}^T =
+      \begin{bmatrix}
+        A^T & B^T \\
+        C^T & D^T
+      \end{bmatrix}
+    \end{equation}
   \end{enumerate}
+  it can be seen that this is the case for this example
