@@ -41,7 +41,32 @@
     the eigenvalues produce linearly independent eigenvectors)
   \item Consider the quadratic Lyapunov functino $V = \bar x^T P \bar x$ with
     $P = \begin{bmatrix} \frac a 2 & 0 \\ 0 & \frac 1 2\end{bmatrix}$. What can be said about the stability of
-    the system based on this choice of the Lyapunov function?
+    the system based on this choice of the Lyapunov function? \\
+    \begin{equation}
+      \begin{bmatrix}
+        x_1 & x_2
+      \end{bmatrix}
+      \begin{bmatrix}
+        \frac a 2 & 0 \\
+        0 & \frac 1 2
+      \end{bmatrix}
+      \begin{bmatrix}
+        x_1 \\
+        x_2
+      \end{bmatrix}=
+      \begin{bmatrix}
+        x_1 & x_2
+      \end{bmatrix}
+      \begin{bmatrix}
+        \frac {ax_1} 2\\
+        \frac {x_2} 2
+      \end{bmatrix} = 
+      \begin{bmatrix}
+        \frac {a(x_1)^2} 2\\
+        \frac {(x_2)^2} 2
+      \end{bmatrix} 
+    \end{equation}
+    
   \item What can be said about the stability of the system based on the analysis of b) and c)?
   \item Study BIBS stability of the system when $c=0$ \\
     \begin{equation}
