@@ -15,7 +15,7 @@ def generate(main_tex: str, texLoc: str, finalOut: str, varFiles: List[str]) -> 
     theseVars = deepcopy(varFiles)
     inst = TemplateCore.instance()
     logging.info(f"generating pdf: {main_tex + '.pdf'}")
-    inst.generate(main_tex, texLoc, varFiles=theseVars)
+    inst.generate(main_tex, texLoc, varFiles=theseVars, latex_args=["-shell-escape"])
     finalName = extensionLessName(main_tex) + ".pdf"
     generated_pdf=os.path.join(texLoc, main_tex + ".pdf")
     final_pdf= os.path.join(finalOut, finalName)
@@ -26,7 +26,7 @@ def extensionLessName(fileName: str) -> str:
     return fileName.split("/")[-1].split(".")[0]
     
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(level=logging.DEBUG)
     inst = TemplateCore.instance()
     inst.templateDir = "Templates"
     inst.resultsFolder = "TexFolder"
