@@ -1,0 +1,173 @@
+\item For each of the systems (a) and (b) do the following:
+  \begin{enumerate}
+  \item Obtain the eigenvalues \\
+    \begin{enumerate}
+    \item A\\
+      \begin{equation}
+        0 =
+        \Delta(\lambda) =
+        \vert \lambda I - A\vert =
+        \begin{vmatrix}
+          \lambda + 6 & 1 & 0 \\
+          11 & \lambda & 1 \\
+          6 & 0 & \lambda \\
+        \end{vmatrix}
+      \end{equation}
+      \begin{equation}
+        0 =
+        (\lambda + 6)(\lambda^2) + 11\lambda + 6 =
+        \lambda^3 + 6\lambda^2 + 11\lambda + 6 =
+      \end{equation}
+      \begin{equation}
+        0 =
+        \lambda^3 + 6\lambda^2 + 11\lambda + 6 =
+        (x + 1)(x^2 + 5x + 6) = 
+        (x + 1)(x + 2)(x + 3)
+      \end{equation}
+      \begin{equation}
+        \lambda = -1, -2, -3
+      \end{equation}
+      \begin{equation}
+        0 =
+        \vert \lambda I - A\vert =
+        \begin{bmatrix}
+          \lambda + 6 & 1 & 0 \\
+          11 & \lambda & 1 \\
+          6 & 0 & \lambda \\
+        \end{bmatrix}v
+      \end{equation}
+      \begin{equation}
+        0 = 
+        \begin{bmatrix}
+          5 & 1 & 0 \\
+          11 & -1 & 1 \\
+          6 & 0 & -1 \\
+        \end{bmatrix}v_1
+      \end{equation}
+      \begin{equation}
+        v_1 =
+        \begin{bmatrix}
+          \frac 1 2 \\
+          \frac 3 2 \\
+          1
+        \end{bmatrix}
+      \end{equation}
+      \begin{equation}
+        0 = 
+        \begin{bmatrix}
+          4 & 1 & 0 \\
+          11 & -2 & 1 \\
+          6 & 0 & -2 \\
+        \end{bmatrix}v_1
+      \end{equation}
+      \begin{equation}
+        v_2 =
+        \begin{bmatrix}
+          \frac 1 3 \\
+          \frac 4 3 \\
+          1
+        \end{bmatrix}
+      \end{equation}
+      \begin{equation}
+        0 = 
+        \begin{bmatrix}
+          3 & 1 & 0 \\
+          11 & -3 & 1 \\
+          6 & 0 & -3 \\
+        \end{bmatrix}v_1
+      \end{equation}
+      \begin{equation}
+        v_3 =
+        \begin{bmatrix}
+          \frac 1 6 \\
+          \frac 5 6 \\
+          1
+        \end{bmatrix}
+      \end{equation}
+      \begin{equation}
+        V =
+        \begin{bmatrix}
+          \frac 1 2 & \frac 1 3 & \frac 1 6
+          \frac 3 2 & \frac 4 3 & \frac 5 6\\
+          1 & 1 & 1
+        \end{bmatrix}
+      \end{equation}
+    \item B\\
+      eigenvalues are: $\lambda = -1, -1, -1, -2, -3, -3$
+      from sympy.jordan\_from, eigenvectors are:
+      \begin{equation}
+        V = 
+        \left[\begin{matrix}0 & 0 & 0 & 1 & 0 & 0\\0 & 0 & 1 & 0 & 1 & 0\\0 & 0 & 0 & 0 & 1 & 0\\1 & 0 & 0 & 0 & 0 & 0\\0 & 1 & 0 & 0 & 0 & \frac{1}{2}\\0 & 0 & 0 & 0 & 0 & 1\end{matrix}\right]
+      \end{equation}
+    \end{enumerate}
+  \item Use the similarity transformation $x(t) = Vz(t)$ to express the system in the modal form\\
+    \begin{enumerate}
+    \item A\\
+      \begin{equation}
+        \bar A = J =
+        \begin{bmatrix}
+          -3 & 0 & 0 \\
+          0 & -2 & 0 \\
+          0 & 0 & -1 \\
+        \end{bmatrix}
+      \end{equation}
+      \begin{equation}
+        \bar B = V^{-1}B = 
+        \begin{bmatrix}
+          -4 \\
+          9 \\
+          0
+        \end{bmatrix}
+      \end{equation}
+      \begin{equation}
+        \bar C = CV = 
+        \begin{bmatrix}
+          \frac 1 2 & \frac 1 3 & \frac 1 6
+        \end{bmatrix}
+      \end{equation}
+    \item B\\
+      jordan form:
+      \begin{equation}
+        \bar A = J = 
+        \left[\begin{matrix}-3 & 0 & 0 & 0 & 0 & 0\\0 & -3 & 0 & 0 & 0 & 0\\0 & 0 & -2 & 0 & 0 & 0\\0 & 0 & 0 & -1 & 0 & 0\\0 & 0 & 0 & 0 & -1 & 0\\0 & 0 & 0 & 0 & 0 & -1\end{matrix}\right]
+      \end{equation}
+      \begin{equation}
+        \bar B = V^{-1}B = 
+        \left[\begin{matrix}0 & 1\\- \frac{1}{2} & 0\\0 & -1\\1 & 0\\0 & 1\\1 & 0\end{matrix}\right]
+      \end{equation}
+      \begin{equation}
+        \bar C = CV =
+        \left[\begin{matrix}0 & 0 & 2 & 1 & 2 & 0\\1 & 1 & 0 & 0 & 0 & \frac{1}{2}\end{matrix}\right]
+      \end{equation}
+    \end{enumerate}
+  \item Use the modal form to study the controllability and observability of the system(slides 77, 85)\\
+    \begin{enumerate}
+    \item A\\
+      modal state variables 1 and 2 are controllable do to non-zero values but 3 is not. all state variables are
+      observable due to non-zero values. 
+    \item B\\
+      state variables are 1-3 are controllable, 4-6 are not due to non-linear independence of bottom three rows
+      of B. only the -2 eigenvalue state variable is observable because of its linear independence 
+    \end{enumerate}
+  \item idicate teh controllability and onbservability of each mode\\
+    \begin{enumerate}
+    \item A\\
+      System is observable not controllable
+    \item B\\
+      system is not controllobale or observable
+    \end{enumerate}
+  \item Study stabalizability and detectability of the system\\
+    \begin{enumerate}
+    \item A\\
+      system is stabalizable(and obviously) detectable
+    \item B\\
+      system is stabalizable and detectable
+    \end{enumerate}
+  \item Plot the block diagram of the modal form\\
+    \begin{enumerate}
+    \item A\\
+      \PY{ 'this' | TODO }
+    \item B\\
+      \PY{ 'this' | TODO }
+    \end{enumerate}
+  \end{enumerate}
