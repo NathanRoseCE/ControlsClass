@@ -1,0 +1,299 @@
+\item For the systems of a and b do the following:
+  \begin{enumerate}
+  \item Obtain the transfer function matrix \\
+    \begin{enumerate}
+    \item A\\
+      \begin{equation}
+        G(s) =
+        C(sI-A)^{-1}B + D =
+        \begin{bmatrix}
+          3 & 1 & 4 & 0 \\
+          0 & 1 & 0 & 1 
+        \end{bmatrix}
+        \begin{bmatrix}
+          s + 6 & -1 & 0 & 0 \\
+          0 & s + 6 & 0 & 0 \\
+          0 & 0 & s + 6 & 0 \\
+          0 & 0 & 0 & s - 6
+        \end{bmatrix}^{-1}
+        \begin{bmatrix}
+          0 & 0 & 0 \\
+          1 & 1 & 1 \\
+          2 & 0 & 2 \\
+          0 & 1 & 0
+        \end{bmatrix}
+      \end{equation}
+      \begin{equation}
+        G(s) =
+        \frac 1 {(s+6)^2(s-6)}
+        \begin{bmatrix}
+          3 & 1 & 4 & 0 \\
+          0 & 1 & 0 & 1 
+        \end{bmatrix}
+        \begin{bmatrix}
+          s^2 - 36 & s - 6 & 0 & 0 \\
+          0 & s^2 - 36 & 0 & 0 \\
+          0 & 0 & s^2 - 36 & 0 \\
+          0 & 0 & 0 & (s + 6)^2
+        \end{bmatrix}
+        \begin{bmatrix}
+          0 & 0 & 0 \\
+          1 & 1 & 1 \\
+          2 & 0 & 2 \\
+          0 & 1 & 0
+        \end{bmatrix}
+      \end{equation}
+      \begin{equation}
+        G(s) =
+        \frac 1 {(s+6)^2(s-6)}
+        \begin{bmatrix}
+          3 & 1 & 4 & 0 \\
+          0 & 1 & 0 & 1 
+        \end{bmatrix}
+        \begin{bmatrix}
+          s - 6 & s - 6 & s - 6\\
+          s^2 - 36  & s^2 - 36 & s^2 - 36 \\
+          2s^2 - 72  & 0 & 2s^2 - 72 \\
+          0 & (s + 6)^2 & 0
+        \end{bmatrix}
+      \end{equation}
+      \begin{equation}
+        G(s) =
+        \frac 1 {(s+6)^2(s-6)}
+        \begin{bmatrix}
+          9s^2 + 3s - 342 & s^2 + 3s - 54 & 9s^2 + 3s - 342 \\
+          s^2 - 36 & 2s(s+6) & s^2 - 36 \\
+        \end{bmatrix}
+      \end{equation}
+    \item B\\
+      from previous problem, only thing that changes is C
+      \begin{equation}
+        G(s) =
+        \frac 1 {(s+6)^2(s-6)}
+        \begin{bmatrix}
+          3 & 1 & 4 & 0 \\
+          0 & 1 & 1 & 1 
+        \end{bmatrix}
+        \begin{bmatrix}
+          s - 6 & s - 6 & s - 6\\
+          s^2 - 36  & s^2 - 36 & s^2 - 36 \\
+          4s^2 - 144  & 0 & 4s^2 - 144 \\
+          0 & (s + 6)^2 & 0
+        \end{bmatrix}
+      \end{equation}
+      \begin{equation}
+        G(s) =
+        \frac 1 {(s+6)^2(s-6)}
+        \begin{bmatrix}
+          9s^2 + 3s - 342 & s^2 + 3s - 54 & 9s^2 + 3s - 342 \\
+          s^2 - 36 & 2s(s+6) & s^2 - 36 \\
+        \end{bmatrix}
+      \end{equation}
+    \end{enumerate}
+  \item Verify the system is a minimum realization, if the system is not minimal do steps 3 and 4 \\
+    A minimum realization is both observable and controllable
+    \begin{enumerate}
+    \item A\\
+      Controllable because rows 2 and 3 of matrix B are LI, and row 4 is non-zero
+      not observable because columns 1 and 3 of matrix C are not LI
+      This is a not a min realization
+    \item B\\
+      Controllable because rows 2 and 3 of matrix B are LI, and row 4 is non-zero
+      Observable because columns 1 and 3 of matrix C are LI and column 4 is non-zero
+      This is a min realization
+    \end{enumerate}
+  \item Use approach a discussed in slide 92 to obtain the minimal realization of the system. \\
+    \begin{enumerate}
+    \item A\\
+      Move to observable canonical form
+      $q = 2, r =3$
+      \begin{equation}
+        (s+6)^2(s-6) = (s^2 + 12s + 36)(s-6) = s^3 + 6s^2 - 36s - 216
+      \end{equation}
+      \begin{equation}
+        N_0 =
+        \begin{bmatrix}
+          0 & 0 & 0 \\
+          0 & 0 & 0 \\
+        \end{bmatrix}
+      \end{equation}
+      \begin{equation}
+        N_1 =
+        \begin{bmatrix}
+          9 & 1 & 9 \\
+          1 & 2 & 1 \\
+        \end{bmatrix}
+      \end{equation}
+      \begin{equation}
+        N_2 =
+        \begin{bmatrix}
+          3 & 3 & 3 \\
+          0 & 12 & 0 \\
+        \end{bmatrix}
+      \end{equation}
+      \begin{equation}
+        N_3 =
+        \begin{bmatrix}
+          -342 & -54 & -342 \\
+          -36 & 12 & -36 \\
+        \end{bmatrix}
+      \end{equation}
+      \begin{equation}
+        A =
+        \begin{bmatrix}
+          0 & 0 & 0 & 0 & 216 & 0 \\
+          0 & 0 & 0 & 0 & 0 & 216 \\
+          1 & 0 & 0 & 0 & 36 & 0 \\
+          0 & 1 & 0 & 0 & 0 & 36 \\
+          0 & 0 & 1 & 0 & -6 & 0 \\
+          0 & 0 & 0 & 1 & 0 & -6 \\
+        \end{bmatrix}
+      \end{equation}
+      \begin{equation}
+        B =
+        \begin{bmatrix}
+          -342 & -54 & -342 \\
+          -36 & 12 & -36 \\
+          3 & 3 & 3 \\
+          0 & 12 & 0 \\
+          9 & 1 & 9 \\
+          1 & 2 & 1 \\
+        \end{bmatrix}
+      \end{equation}
+      \begin{equation}
+        C =
+        \begin{bmatrix}
+          0 & 0 & 0 & 0 & 1 & 0 \\
+          0 & 0 & 0 & 0 & 0 & 1 \\
+        \end{bmatrix}
+      \end{equation}
+      \begin{equation}
+        D =
+        \begin{bmatrix}
+          0 & 0 & 0 \\
+          0 & 0 & 0 \\
+        \end{bmatrix}
+      \end{equation}
+      Now move it to jordan form:
+      \begin{equation}
+        P =
+        \left[\begin{matrix}-36 & -6 & 0 & 0 & 36 & 0\\0 & 0 & -36 & -6 & 0 & 36\\0 & 1 & 0 & 0 & 12 & 0\\0 & 0 & 0 & 1 & 0 & 12\\1 & 0 & 0 & 0 & 1 & 0\\0 & 0 & 1 & 0 & 0 & 1\end{matrix}\right]
+      \end{equation}
+      \begin{equation}
+        \bar A = J =
+        \left[\begin{matrix}-6 & 1 & 0 & 0 & 0 & 0\\0 & -6 & 0 & 0 & 0 & 0\\0 & 0 & -6 & 1 & 0 & 0\\0 & 0 & 0 & -6 & 0 & 0\\0 & 0 & 0 & 0 & 6 & 0\\0 & 0 & 0 & 0 & 0 & 6\end{matrix}\right]
+      \end{equation}
+      \begin{equation}
+        \bar B = P^{-1}B = 
+        \left[\begin{matrix}-36 & -6 & 0 & 0 & 36 & 0\\0 & 0 & -36 & -6 & 0 & 36\\0 & 1 & 0 & 0 & 12 & 0\\0 & 0 & 0 & 1 & 0 & 12\\1 & 0 & 0 & 0 & 1 & 0\\0 & 0 & 1 & 0 & 0 & 1\end{matrix}\right]
+        \begin{bmatrix}
+          -342 & -54 & -342 \\
+          -36 & 12 & -36 \\
+          3 & 3 & 3 \\
+          0 & 12 & 0 \\
+          9 & 1 & 9 \\
+          1 & 2 & 1 \\
+        \end{bmatrix} =
+        \left[\begin{matrix}9 & 1 & 9\\3 & 3 & 3\\1 & \frac{11}{12} & 1\\0 & -1 & 0\\0 & 0 & 0\\0 & \frac{13}{12} & 0\end{matrix}\right]
+      \end{equation}
+      \begin{equation}
+        \bar C = CP = 
+        \begin{bmatrix}
+          0 & 0 & 0 & 0 & 1 & 0 \\
+          0 & 0 & 0 & 0 & 0 & 1 \\
+        \end{bmatrix}
+        \left[\begin{matrix}-36 & -6 & 0 & 0 & 36 & 0\\0 & 0 & -36 & -6 & 0 & 36\\0 & 1 & 0 & 0 & 12 & 0\\0 & 0 & 0 & 1 & 0 & 12\\1 & 0 & 0 & 0 & 1 & 0\\0 & 0 & 1 & 0 & 0 & 1\end{matrix}\right] =
+        \left[\begin{matrix}1 & 0 & 0 & 0 & 1 & 0\\0 & 0 & 1 & 0 & 0 & 1\end{matrix}\right]
+      \end{equation}
+      Painfully remove a state variable
+      \begin{equation}
+        y(t) =
+        \begin{bmatrix}
+          1 \\
+          0
+        \end{bmatrix}\bar x_0 + 
+        \begin{bmatrix}
+          0 \\
+          0
+        \end{bmatrix}\bar x_1 + 
+        \begin{bmatrix}
+          0 \\
+          1
+        \end{bmatrix}\bar x_2 + 
+        \begin{bmatrix}
+          0 \\
+          0
+        \end{bmatrix}\bar x_3 + 
+        \begin{bmatrix}
+          1 \\
+          0
+        \end{bmatrix}\bar x_4 + 
+        \begin{bmatrix}
+          0 \\
+          1
+        \end{bmatrix}\bar x_5
+      \end{equation}
+      Lets define the state variables as follows:
+      \begin{enumerate}
+      \item \phantom{.} $q_o = \bar x_0 + \bar x_4$
+      \item \phantom{.} $q_1 = \bar x_1$
+      \item \phantom{.} $q_2 = \bar x_2$
+      \item \phantom{.} $q_3 = \bar x_3$
+      \item \phantom{.} $q_4 = \bar x_5$
+      \end{enumerate}
+      Thus:
+      \begin{enumerate}
+      \item \phantom{.} $\dot q_o = \dot \bar x_0 + \dot \bar x_4$
+      \item \phantom{.} $\dot q_1 = \dot \bar x_1$
+      \item \phantom{.} $\dot q_2 = \dot \bar x_2$
+      \item \phantom{.} $\dot q_3 = \dot \bar x_3$
+      \item \phantom{.} $\dot q_4 = \dot \bar x_5$
+      \end{enumerate}
+      THe state update equation is the same as bar A but:\\
+      \begin{enumerate}
+      \item row 0 = row 0 + row 4
+      \end{enumerate}
+      for the output equation you just delete column 4 resulting in the following stat equation
+      same thing, but swap row for column for C
+      \begin{equation}
+        \dot q =
+        \left[\begin{matrix}-6 & 1 & 0 & 0 & 0\\0 & -6 & 0 & 0 & 0\\0 & 0 & -6 & 1 & 0\\0 & 0 & 0 & -6 & 0\\0 & 0 & 0 & 0 & 6\end{matrix}\right]q +
+        \left[\begin{matrix}9 & 1 & 9\\3 & 3 & 3\\1 & \frac{11}{12} & 1\\0 & -1 & 0\\0 & \frac{13}{12} & 0\end{matrix}\right] u
+      \end{equation}
+      \begin{equation}
+        y =
+        \left[\begin{matrix}1 & 0 & 0 & 0 & 0\\0 & 0 & 1 & 0 & 1\end{matrix}\right] q +
+        \left[\begin{matrix}0 & 0 & 0\\0 & 0 & 0\end{matrix}\right] u
+      \end{equation}
+    \item B\\
+      not needed
+    \end{enumerate}
+  \item Show that the transfer matrix of the minimal realization is the same as that in part i \\
+    \begin{enumerate}
+    \item A\\
+      \begin{equation}
+        G(s) = C(sI-A)^{-1}B + D =
+        \left[\begin{matrix}1 & 0 & 0 & 0 & 0\\0 & 0 & 1 & 0 & 1\end{matrix}\right]
+        (\left[\begin{matrix}s + 6 & -1 & 0 & 0 & 0\\0 & s + 6 & 0 & 0 & 0\\0 & 0 & s + 6 & -1 & 0\\0 & 0 & 0 & s + 6 & 0\\0 & 0 & 0 & 0 & s - 6\end{matrix}\right])^{-1}
+        \left[\begin{matrix}9 & 1 & 9\\3 & 3 & 3\\1 & \frac{11}{12} & 1\\0 & -1 & 0\\0 & \frac{13}{12} & 0\end{matrix}\right] + 0
+      \end{equation}
+      \begin{equation}
+        G(s) = 
+        \left[\begin{matrix}1 & 0 & 0 & 0 & 0\\0 & 0 & 1 & 0 & 1\end{matrix}\right]
+        \left[\begin{matrix}\frac{1}{s + 6} & \frac{1}{s^{2} + 12 s + 36} & 0 & 0 & 0\\0 & \frac{1}{s + 6} & 0 & 0 & 0\\0 & 0 & \frac{1}{s + 6} & \frac{1}{s^{2} + 12 s + 36} & 0\\0 & 0 & 0 & \frac{1}{s + 6} & 0\\0 & 0 & 0 & 0 & \frac{1}{s - 6}\end{matrix}\right]
+        \left[\begin{matrix}9 & 1 & 9\\3 & 3 & 3\\1 & \frac{11}{12} & 1\\0 & -1 & 0\\0 & \frac{13}{12} & 0\end{matrix}\right] + 0
+      \end{equation}
+      \begin{equation}
+        G(s) =
+        \left[\begin{matrix}\frac{3 \left(3 s + 19\right)}{s^{2} + 12 s + 36} & \frac{s + 9}{s^{2} + 12 s + 36} & \frac{3 \left(3 s + 19\right)}{s^{2} + 12 s + 36}\\\frac{1}{s + 6} & \frac{2 \left(s^{2} + 6 s + 6\right)}{s^{3} + 6 s^{2} - 36 s - 216} & \frac{1}{s + 6}\end{matrix}\right]
+      \end{equation}
+      \begin{equation}
+        G(s) =
+        \frac 1 {(s+6^2)(s-6)}
+        \left[\begin{matrix}9 s^{2} + 3 s - 342 & s^{2} + 3 s - 54 & 9 s^{2} + 3 s - 342\\s^{2} - 36 & 2 s^{2} + 12 s + 12 & s^{2} - 36\end{matrix}\right]
+      \end{equation}
+
+    \item B\\
+      not needed
+    \end{enumerate}
+  \end{enumerate}
