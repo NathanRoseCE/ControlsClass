@@ -6,9 +6,45 @@
     \dot x_2 = -x_2\cos(x_1) + \cos(2x_1)u
   \end{equation}
   \begin{enumerate}
-  \item Veirfy that $(x_1, x_2, u) = (0,0,0)$ is an equilibrium.
-  \item linearize the system about the origin
-  \item Study the controllability of the linearized system
+  \item verify that $(x_1, x_2, u) = (0,0,0)$ is an equilibrium. \\
+    \begin{equation}
+      \dot x_1 = 0 + 0 + 0 = 0
+    \end{equation}
+    \begin{equation}
+      \dot x_2 = 0(1) + 1(0) = 0
+    \end{equation}
+    yes
+  \item linearize the system about the origin \\
+    \begin{equation}
+      \dot x_1 =
+      -2x_1 + x_2 =
+      -2x_1 + 2x_2
+    \end{equation}
+    \begin{equation}
+      \dot x_1 = -x_2 + u
+    \end{equation}
+    \begin{equation}
+      \dot x =
+      \begin{bmatrix}
+        -2 & 1 \\
+        0 & -1
+      \end{bmatrix} +
+      \begin{bmatrix}
+        0 \\
+        1
+      \end{bmatrix}
+    \end{equation}
+  \item Study the controllability of the linearized system \\
+    \begin{equation}
+      \begin{bmatrix}
+        B & AB
+      \end{bmatrix} =
+      \begin{bmatrix}
+        0 & 1 \\
+        1 & -1
+      \end{bmatrix}
+    \end{equation}
+    full rank, controllable
   \item Assuming bost state variables can be measured, find a state feedback control law such that both
     eigenvalues of the linearized closed-loop system -4
   \item Apply the state feedback control law obtained in pard d to the non=linear system above.
