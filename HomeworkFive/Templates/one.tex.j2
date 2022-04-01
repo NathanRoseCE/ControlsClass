@@ -1,0 +1,150 @@
+\item Consider the LTI SISO system with matrices:
+  \begin{equation}
+    A =
+    \begin{bmatrix}
+      2 & 1 & 0 \\
+      0 & 2 & 1 \\
+      0 & 0 & 2
+    \end{bmatrix}
+    B =
+    \begin{bmatrix}
+      0 \\
+      0 \\
+      1
+    \end{bmatrix}
+  \end{equation}
+  Assuming all state variabels can be measures, find a state feedback control law such that the eigenvalues
+  of the closed loop system become: $\lambda_{d_1} = \lambda_{d_2} = \lambda_{d_3} = -1$
+
+  \begin{enumerate}
+  \item Choose the desired eigenvalues and obtain the desired characteristic equation
+    \begin{equation}
+      \Delta_d(s) =
+      (s-\lambda_1)(s-\lambda_2)(s-\lambda_3) =
+      (s+1)(s+1)(s+1) =
+      s^3 + 3s^2 + 3s + 1
+    \end{equation}
+    \begin{equation}
+      \bar \alpha  =
+      \begin{bmatrix}
+        3 & 3 & 1
+      \end{bmatrix}
+    \end{equation}
+  \item Find the actual characterstic equation
+    \begin{equation}
+      \Delta(s) = \vert sI -A \vert =
+      \begin{vmatrix}
+        s-2 & -1 & 0 \\
+        0 & s-2 & -1 \\
+        0 & 0 & s-2
+      \end{vmatrix}
+    \end{equation}
+    \begin{equation}
+      \Delta(s) = 
+      \begin{vmatrix}
+        s-2 & -1 & 0 \\
+        0 & s-2 & -1 \\
+        0 & 0 & s-2
+      \end{vmatrix} =
+      (s-2)^3 =
+      s^3 - 6s^2 + 12s - 8
+    \end{equation}
+    \begin{equation}
+      \alpha = 
+      \begin{bmatrix}
+        -6 & 12 & -8
+      \end{bmatrix}
+    \end{equation}
+  \item Calulate $\bar k$
+    \begin{equation}
+      \bar k = \bar \alpha - \alpha =
+      \begin{bmatrix}
+        3 & 3 & 1
+      \end{bmatrix} - 
+      \begin{bmatrix}
+        -6 & 12 & -8
+      \end{bmatrix} =
+      \begin{bmatrix}
+        9 & -9 & 9
+      \end{bmatrix}
+    \end{equation}
+  \item Calculate $P$
+    \begin{equation}
+      Q = P^{-1} =
+      \begin{bmatrix}
+        b & AB & A^2B
+      \end{bmatrix}
+      \begin{bmatrix}
+        1 & \alpha_1 & \alpha_2 \\
+        0 & 1 & \alpha_1 \\
+        0 & 0 & 1 \\
+      \end{bmatrix} = 
+      \begin{bmatrix}
+        0 & 0 & 1 \\
+        0 & 1 & 4 \\
+        1 & 2 & 4 
+      \end{bmatrix}
+      \begin{bmatrix}
+        1 & -6 & 12 \\
+        0 & 1 & -6 \\
+        0 & 0 & 1 \\
+      \end{bmatrix} =
+      \begin{bmatrix}
+        0 & 0 & 1 \\
+        0 & 1 & -2 \\
+        1 & -4 & 4 
+      \end{bmatrix}
+    \end{equation}
+    \begin{equation}
+      P = Q^{-1} = 
+      \begin{bmatrix}
+        0 & 0 & 1 \\
+        0 & 1 & -2 \\
+        1 & -4 & 4 
+      \end{bmatrix}^{-1} =
+      \begin{bmatrix}
+        4 & 4 & 1\\
+        2 & 1 & 0 \\
+        1 & 0 & 0 
+      \end{bmatrix}
+    \end{equation}
+  \item Calculate $k$
+    \begin{equation}
+      k = \bar k P =
+      \begin{bmatrix}
+        9 & -9 & 9
+      \end{bmatrix}
+      \begin{bmatrix}
+        4 & 4 & 1\\
+        2 & 1 & 0 \\
+        1 & 0 & 0 
+      \end{bmatrix} =
+      \begin{bmatrix}
+        27 & 27 & 9
+      \end{bmatrix}
+    \end{equation}
+  \item Confirm eigenvalues of $A-bk$
+    \begin{equation}
+      A - bk =
+      \begin{bmatrix}
+        2 & 1 & 0 \\
+        0 & 2 & 1 \\
+        0 & 0 & 2
+      \end{bmatrix}
+      \begin{bmatrix}
+        0 \\
+        0 \\
+        1
+      \end{bmatrix}
+      \begin{bmatrix}
+        27 & 27 & 9
+      \end{bmatrix} =
+      \begin{bmatrix}
+        2 & 1 & 0 \\
+        0 & 2 & 1 \\
+        -27 & -27 & -7
+      \end{bmatrix}
+    \end{equation}
+    eigenvalues are: $-1, -1, -1$
+  \end{enumerate}
+  

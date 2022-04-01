@@ -16,6 +16,55 @@
         (s2+1)(s+1) & s(s+1)\\ 
       \end{bmatrix}
     \end{equation}
+    \begin{equation}
+      H(s) =
+      \frac{N_0}{s} + \frac {N_{1-0}}{s+1} + \frac {N_{1-1}}{(s+1)^2}
+    \end{equation}
+    \begin{equation}
+      H(s) =
+      \frac 1 s
+      \begin{bmatrix}
+        0 & 0 \\
+        1 & 0
+      \end{bmatrix} +
+      \frac 1 {s+1}
+      \begin{bmatrix}
+        -1 & 1 \\
+        1 & 1
+      \end{bmatrix} +
+      \frac 1 {(s+1)^2}
+      \begin{bmatrix}
+        1 & 0 \\
+        0 & 0
+      \end{bmatrix} 
+    \end{equation}
+    \begin{equation}
+      H(s) =
+      \frac 1 s
+      \begin{bmatrix}
+        0 \\
+        1
+      \end{bmatrix}
+      \begin{bmatrix}
+        1 & 0
+      \end{bmatrix}+
+      \frac 1 {s+1}
+      \begin{bmatrix}
+        -1 & 1 \\
+        1 & 1
+      \end{bmatrix} +
+      \frac 1 {(s+1)^2}
+      \begin{bmatrix}
+        1 \\
+        0
+      \end{bmatrix}
+      \begin{bmatrix}
+        1 & 0
+      \end{bmatrix}
+    \end{equation}
+    rank = 4
+    
     {\LARGE \color{red} TODO: Finish}
-  \item Show that the transfer function matrix of the minimal realization is the same as H(s) given above
+  \item Show that the transfer function matrix of the minimal realization is the same as H(s) given above\\
+    {\LARGE \color{red} TODO: this}
   \end{enumerate}
