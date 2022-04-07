@@ -15,16 +15,19 @@
 \usepackage{amsmath}
 \usepackage{mathrsfs}
 \usepackage{minted}
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{resources/sources.bib}
 
 \title{Controls Project}
 \author{Nathan Rose}
 \date{\today}
 
-
+\newcommand{\doty}{\dot y}
 \newcommand{\laplace}[1]{\mathscr{L}(#1)}
 \newcommand{\laplaceinv}[1]{\mathscr{L}^{-1}(#1)}
 \begin{document}
 \maketitle
 \subimport{./}{abstract}
+\subimport{./}{introduction}
 \subimport{./}{help_recieved}
 \end{document}

@@ -1,0 +1,54 @@
+{
+    "run_one": {
+	"name": "run_one",
+	"caption": "Run One",
+	"duration": 10,
+	"dt": 0.01,
+	"x_0": [
+	    [1],
+	    [0]
+	],
+	"k": [
+	    [4, 5]
+	]
+    },
+    "run_two": {
+	"name": "run_two",
+	"caption": "Run Two",
+	"duration": 10,
+	"dt": 0.01,
+	"x_0": [
+	    [1],
+	    [1]
+	],
+	"k": [
+	    [4, 5]
+	]
+    },
+    "run_three": {
+	"name": "run_three",
+	"caption": "Run Three",
+	"duration": 10,
+	"dt": 0.01,
+	"x_0": [
+	    [-1],
+	    [1]
+	],
+	"k": [
+	    [4, 5]
+	]
+    },
+    "run_four": {
+	"name": "run_four",
+	"caption": "Run Four",
+	"duration": 10,
+	"dt": 0.01,
+	"x_0": [
+	    [-10],
+	    [10]
+	],
+	"k": [
+	    [4, 5]
+	]
+    }
+}

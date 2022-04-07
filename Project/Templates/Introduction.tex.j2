@@ -1,19 +1,23 @@
 \section{Introduction}
 
+\subsection{Defining the non-linear system}
 A doubly inverted pendulum is a pendulum on a pendulum. What makes this a classical control problem is the
 inverted nature of the system. That is instead of hanging the pendulum, the goal is to balence it upright.
 
-For this project, the system states will be defined as:
-\begin{enumerate}
-\item $x$ is the position of the cart
-\item $\theta_0$ angle of joint 0 to joint 1
-\item $\theta_1$ angle of joint 1 to joint 2
-\end{enumerate}
+The equations of motion were derived with assistance from \cite{eq_of_motion}.
+\PY{ 'fix cite with a filter' | TODO }
 
-with the input being the force input on the cart that caries it.
+This will not be a derivation of the work, as the work follows closely from \cite{eq_of_motion} which I used
+as a source to help derive the non-linear equations of motion. 
 
-This system can be modeled as follows:
-\begin{equation}
+\PY{ non_linear_system | nonlinear_equation_symbolic }
+\PY{ non_linear_system | nonlinear_equation_evaluated }
+\PY{ 'fix runnon equations...... somehow' | TODO }
 
-\end{equation}
+\subsection{Defining the linear system}
+The Linearization was simply a jacobian taken at 0,0,0 which is an equilibrium point that the system will be
+controlled to.
+
+\PY{ non_linear_system | linear_equation_symbolic }
+\PY{ non_linear_system | linear_equation_evaluated }
 

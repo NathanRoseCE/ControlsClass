@@ -1,5 +1,6 @@
 from LatexTemplater.TemplateCore import TemplateCore
 from . import Common
+from . import QuestionFour
 
 
 def initialize():
@@ -8,7 +9,8 @@ def initialize():
     """
     instance = TemplateCore.instance()
     registrationFuncs = [
-        Common.registrationInfo
+        Common.registrationInfo,
+        QuestionFour.registrationInfo
     ]
     for registerFunc in registrationFuncs:
         filterinfo = registerFunc()

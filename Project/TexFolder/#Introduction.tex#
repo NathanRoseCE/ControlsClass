@@ -1,0 +1,36 @@
+\section{Introduction}
+
+\subsection{Defining the non-linear system}
+A doubly inverted pendulum is a pendulum on a pendulum. What makes this a classical control problem is the
+inverted nature of the system. That is instead of hanging the pendulum, the goal is to balence it upright.
+
+The equations of motion were derived with assistance from \cite{eq_of_motion}.
+{\LARGE \color{red} TODO: fix cite with a filter}
+
+with the input being the force input on the cart that caries it.
+The system is going to assume masses are only at the joints, and systeman
+
+% generated equation
+\begin{equation}
+M = \left[\begin{matrix}2.0 & 2.0 \cos{\left(\theta_{1} \right)} & 1.0 \cos{\left(\theta_{2} \right)}\\
+2.0 \cos{\left(\theta_{1} \right)} & 4.0 & 2.0 \cos{\left(\theta_{1} - \theta_{2} \right)}\\
+1.0 \cos{\left(\theta_{2} \right)} & 2.0 \cos{\left(\theta_{1} - \theta_{2} \right)} & 2.0\end{matrix}\right]
+\end{equation}
+\begin{equation}
+f = \left[\begin{matrix}2.0 \dot\theta_{1}^{2} \sin{\left(\theta_{1} \right)} + 1.0 \dot\theta_{2}^{2} \sin{\left(\theta_{2} \right)} - 0.1 \dot y + u\\
+- 0.1 \dot\theta_{1} - 2.0 \dot\theta_{2}^{2} \sin{\left(\theta_{1} - \theta_{2} \right)} + 19.62 \sin{\left(\theta_{1} \right)}\\
+2.0 \dot\theta_{1}^{2} \sin{\left(\theta_{1} - \theta_{2} \right)} - 0.1 \dot\theta_{2} + 9.81 \sin{\left(\theta_{2} \right)}\end{matrix}\right]
+\end{equation}
+\begin{equation}
+F = \left[\begin{matrix}\frac{- \left(64.0 \cos{\left(\theta_{1} \right)} - 32.0 \cos{\left(\theta_{2} \right)} \cos{\left(\theta_{1} - \theta_{2} \right)}\right) \left(0.1 \dot\theta_{1} + 2.0 \dot\theta_{2}^{2} \sin{\left(\theta_{1} - \theta_{2} \right)} - 19.62 \sin{\left(\theta_{1} \right)}\right) + \left(64.0 \cos^{2}{\left(\theta_{1} - \theta_{2} \right)} - 128.0\right) \left(2.0 \dot\theta_{1}^{2} \sin{\left(\theta_{1} \right)} + 1.0 \dot\theta_{2}^{2} \sin{\left(\theta_{2} \right)} - 0.1 \dot y + u\right) - 32.0 \left(- 4.0 \dot\theta_{1}^{2} \sin{\left(\theta_{1} - \theta_{2} \right)} + 0.2 \dot\theta_{2} - 19.62 \sin{\left(\theta_{2} \right)}\right) \sin{\left(\theta_{1} \right)} \sin{\left(\theta_{1} - \theta_{2} \right)}}{- 128.0 \sin^{2}{\left(\theta_{1} \right)} + 128.0 \sin{\left(\theta_{1} \right)} \sin{\left(\theta_{2} \right)} \cos{\left(\theta_{1} - \theta_{2} \right)} - 64.0 \sin^{2}{\left(\theta_{2} \right)} - 64.0}\\
+\frac{- \left(16.0 \cos{\left(\theta_{1} \right)} \cos{\left(\theta_{2} \right)} - 32.0 \cos{\left(\theta_{1} - \theta_{2} \right)}\right) \left(2.0 \dot\theta_{1}^{2} \sin{\left(\theta_{1} - \theta_{2} \right)} - 0.1 \dot\theta_{2} + 9.81 \sin{\left(\theta_{2} \right)}\right) + \left(32.0 \cos{\left(\theta_{1} \right)} - 16.0 \cos{\left(\theta_{2} \right)} \cos{\left(\theta_{1} - \theta_{2} \right)}\right) \left(2.0 \dot\theta_{1}^{2} \sin{\left(\theta_{1} \right)} + 1.0 \dot\theta_{2}^{2} \sin{\left(\theta_{2} \right)} - 0.1 \dot y + u\right) - \left(8.0 \cos^{2}{\left(\theta_{2} \right)} - 32.0\right) \left(0.1 \dot\theta_{1} + 2.0 \dot\theta_{2}^{2} \sin{\left(\theta_{1} - \theta_{2} \right)} - 19.62 \sin{\left(\theta_{1} \right)}\right)}{- 64.0 \sin^{2}{\left(\theta_{1} \right)} + 64.0 \sin{\left(\theta_{1} \right)} \sin{\left(\theta_{2} \right)} \cos{\left(\theta_{1} - \theta_{2} \right)} - 32.0 \sin^{2}{\left(\theta_{2} \right)} - 32.0}\\
+\frac{- 1.0 \dot\theta_{1}^{2} \sin{\left(\theta_{1} - \theta_{2} \right)} - 0.0375 \dot\theta_{1} \cos{\left(\theta_{1} - \theta_{2} \right)} + 0.0125 \dot\theta_{1} \cos{\left(\theta_{1} + \theta_{2} \right)} - 0.25 \dot\theta_{2}^{2} \sin{\left(2 \theta_{1} - 2 \theta_{2} \right)} - 0.025 \dot\theta_{2} \cos{\left(2 \theta_{1} \right)} + 0.075 \dot\theta_{2} - 0.025 \dot y \cos{\left(\theta_{2} \right)} + 0.025 \dot y \cos{\left(2 \theta_{1} - \theta_{2} \right)} + 0.25 u \cos{\left(\theta_{2} \right)} - 0.25 u \cos{\left(2 \theta_{1} - \theta_{2} \right)} - 2.4525 \sin{\left(\theta_{2} \right)} + 2.4525 \sin{\left(2 \theta_{1} - \theta_{2} \right)}}{0.25 \cos{\left(2 \theta_{1} \right)} + 0.25 \cos{\left(2 \theta_{1} - 2 \theta_{2} \right)} - 1.0}\end{matrix}\right]
+\end{equation}
+\begin{equation}
+  \dot x = \frac d {dt} \begin{bmatrix} y \\
+ \dot y \end{bmatrix} = 
+\left[\begin{matrix}\dot\theta_{2}\\
+\frac{- \left(64.0 \cos{\left(\theta_{1} \right)} - 32.0 \cos{\left(\theta_{2} \right)} \cos{\left(\theta_{1} - \theta_{2} \right)}\right) \left(0.1 \dot\theta_{1} + 2.0 \dot\theta_{2}^{2} \sin{\left(\theta_{1} - \theta_{2} \right)} - 19.62 \sin{\left(\theta_{1} \right)}\right) + \left(64.0 \cos^{2}{\left(\theta_{1} - \theta_{2} \right)} - 128.0\right) \left(2.0 \dot\theta_{1}^{2} \sin{\left(\theta_{1} \right)} + 1.0 \dot\theta_{2}^{2} \sin{\left(\theta_{2} \right)} - 0.1 \dot y + u\right) - 32.0 \left(- 4.0 \dot\theta_{1}^{2} \sin{\left(\theta_{1} - \theta_{2} \right)} + 0.2 \dot\theta_{2} - 19.62 \sin{\left(\theta_{2} \right)}\right) \sin{\left(\theta_{1} \right)} \sin{\left(\theta_{1} - \theta_{2} \right)}}{- 128.0 \sin^{2}{\left(\theta_{1} \right)} + 128.0 \sin{\left(\theta_{1} \right)} \sin{\left(\theta_{2} \right)} \cos{\left(\theta_{1} - \theta_{2} \right)} - 64.0 \sin^{2}{\left(\theta_{2} \right)} - 64.0}\\
+\frac{- \left(16.0 \cos{\left(\theta_{1} \right)} \cos{\left(\theta_{2} \right)} - 32.0 \cos{\left(\theta_{1} - \theta_{2} \right)}\right) \left(2.0 \dot\theta_{1}^{2} \sin{\left(\theta_{1} - \theta_{2} \right)} - 0.1 \dot\theta_{2} + 9.81 \sin{\left(\theta_{2} \right)}\right) + \left(32.0 \cos{\left(\theta_{1} \right)} - 16.0 \cos{\left(\theta_{2} \right)} \cos{\left(\theta_{1} - \theta_{2} \right)}\right) \left(2.0 \dot\theta_{1}^{2} \sin{\left(\theta_{1} \right)} + 1.0 \dot\theta_{2}^{2} \sin{\left(\theta_{2} \right)} - 0.1 \dot y + u\right) - \left(8.0 \cos^{2}{\left(\theta_{2} \right)} - 32.0\right) \left(0.1 \dot\theta_{1} + 2.0 \dot\theta_{2}^{2} \sin{\left(\theta_{1} - \theta_{2} \right)} - 19.62 \sin{\left(\theta_{1} \right)}\right)}{- 64.0 \sin^{2}{\left(\theta_{1} \right)} + 64.0 \sin{\left(\theta_{1} \right)} \sin{\left(\theta_{2} \right)} \cos{\left(\theta_{1} - \theta_{2} \right)} - 32.0 \sin^{2}{\left(\theta_{2} \right)} - 32.0}\\
+\frac{- 1.0 \dot\theta_{1}^{2} \sin{\left(\theta_{1} - \theta_{2} \right)} - 0.0375 \dot\theta_{1} \cos{\left(\theta_{1} - \theta_{2} \right)} + 0.0125 \dot\theta_{1} \cos{\left(\theta_{1} + \theta_{2} \right)} - 0.25 \dot\theta_{2}^{2} \sin{\left(2 \theta_{1} - 2 \theta_{2} \right)} - 0.025 \dot\theta_{2} \cos{\left(2 \theta_{1} \right)} + 0.075 \dot\theta_{2} - 0.025 \dot y \cos{\left(\theta_{2} \right)} + 0.025 \dot y \cos{\left(2 \theta_{1} - \theta_{2} \right)} + 0.25 u \cos{\left(\theta_{2} \right)} - 0.25 u \cos{\left(2 \theta_{1} - \theta_{2} \right)} - 2.4525 \sin{\left(\theta_{2} \right)} + 2.4525 \sin{\left(2 \theta_{1} - \theta_{2} \right)}}{0.25 \cos{\left(2 \theta_{1} \right)} + 0.25 \cos{\left(2 \theta_{1} - 2 \theta_{2} \right)} - 1.0}\end{matrix}\right]
+\end{equation}
