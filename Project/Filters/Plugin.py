@@ -1,6 +1,7 @@
 from LatexTemplater.TemplateCore import TemplateCore
 from . import Common
 from . import Introduction
+from . import ControllerDesign
 
 
 def initialize():
@@ -10,7 +11,8 @@ def initialize():
     instance = TemplateCore.instance()
     registrationFuncs = [
         Common.registrationInfo,
-        Introduction.registrationInfo
+        Introduction.registrationInfo,
+        ControllerDesign.registrationInfo
     ]
     for registerFunc in registrationFuncs:
         filterinfo = registerFunc()

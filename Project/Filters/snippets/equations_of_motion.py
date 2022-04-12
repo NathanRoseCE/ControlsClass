@@ -1,16 +1,32 @@
 from typing import Tuple, Iterable
 from functools import cache
 import sympy
+import functools
 from sympy import Matrix as Matrix
 from sympy import cos, sin
 from LatexTemplater.TemplateCore import TemplateCore
+
+from frozendict import frozendict
+
+def freezeargs(func):
+    """Transform mutable dictionnary
+    Into immutable
+    Useful to be compatible with cache
+    """
+
+    @functools.wraps(func)
+    def wrapped(*args, **kwargs):
+        args = tuple([frozendict(arg) if isinstance(arg, dict) else arg for arg in args])
+        kwargs = {k: frozendict(v) if isinstance(v, dict) else v for k, v in kwargs.items()}
+        return func(*args, **kwargs)
+    return wrapped
 
 def state_symbols() -> Iterable[sympy.Symbol]:
     return sympy.symbols(
         r'y, \theta_1, \theta_2, \doty, \dot\theta_1, \dot\theta_2, u'
     )
-    
-
+   
+@freezeargs
 @cache
 def equation_of_motion_sympy(evaluate_vals:bool=False,
                              *args, **dargs) -> Tuple[Matrix, str, Matrix, Matrix, Matrix]:
@@ -102,10 +118,10 @@ def equations_of_motion_nonlinear_str(*args, **dargs) -> str:
         r"\end{equation}"
     ).replace(r'\\', r'\\'+'\n')
 
-
-def linearized_update_equation_str(*args, **dargs) -> str:
+@cache
+def linearized_update_equation(*args, **dargs) -> Tuple[Matrix, Matrix, Matrix]:
     """
-    linearized version of the update equation
+    gets the A, B, and x matrix for the linearized system
     """
     def gradient(scalar_function, variables):
         matrix_scalar_function = Matrix([scalar_function])
@@ -140,7 +156,13 @@ def linearized_update_equation_str(*args, **dargs) -> str:
         [dot_theta_1],
         [dot_theta_2]
     ])
-        
+    return A, B, x
+
+def linearized_update_equation_str(*args, **dargs) -> str:
+    """
+    linearized version of the update equation
+    """
+    A, B, x = linearized_update_equation(*args, **dargs)
     return (
         r"\begin{equation}"+"\n"+
         r" \dot x = "+sympy.latex(A)+sympy.latex(x)+" + "+sympy.latex(B)+"u\n"+

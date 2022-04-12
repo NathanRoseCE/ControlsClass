@@ -8,9 +8,9 @@
 	"g": 9.81,
 	"d_1": 0.1,
 	"d_2": 0.1,
-	"d_3": 0.1
-    },
-    "linearized_system": {
-	"A": [[]]
+	"d_3": 0.1,
+	"desired_controller_eigenvalues": [
+	    -3, -3, -4, -4, -5, -5
+	]
     }
 }

@@ -1,0 +1,58 @@
+\section{The Controller}
+To begin with, we will develop a controller that will be used in order to apply feedback and make the system
+controllable.
+
+the desired eigenvalues after feedback are: 
+\begin{equation}
+\lambda = -3, -3, -4, -4, -5, -5
+\end{equation}
+Desired Characteristic equation
+\begin{equation}
+\Delta_d(\lambda) = \lambda^{6} + 24 \lambda^{5} + 238 \lambda^{4} + 1248 \lambda^{3} + 3649 \lambda^{2} + 5640 \lambda + 3600
+\end{equation}
+Desired Characteristic equation
+\begin{equation}
+\bar \alpha = \left[\begin{matrix}24 & 238 & 1248 & 3649 & 5640 & 3600\end{matrix}\right]
+\end{equation}
+Desired Characteristic equation
+\begin{equation}
+\Delta_d(\lambda) = \operatorname{PurePoly}{\left( 1.0 \lambda^{6} + 0.2750244140625 \lambda^{5} - 14.6950073242188 \lambda^{4} - 1.71600341796875 \lambda^{3} - 48.1669921875 \lambda^{2}, \lambda, domain=\mathbb{R} \right)}
+\end{equation}
+Desired Characteristic equation
+\begin{equation}
+\alpha = \left[\begin{matrix}0.275 & -14.695 & -1.716 & -48.167 & 0 & 0\end{matrix}\right]
+\end{equation}
+$\bar k$
+\begin{equation}
+  \bar k = \bar \alpha - \alpha = 
+\end{equation}
+\begin{equation}
+  \bar k = \left[\begin{matrix}24 & 238 & 1248 & 3649 & 5640 & 3600\end{matrix}\right] - \\\left[\begin{matrix}0.275 & -14.695 & -1.716 & -48.167 & 0 & 0\end{matrix}\right] = 
+\end{equation}
+\begin{equation}
+  \bar k = \left[\begin{matrix}23.725 & 252.695 & 1249.716 & 3697.167 & 5640.0 & 3600\end{matrix}\right]
+\end{equation}
+Calculate P
+\begin{equation}
+ Q = P^{-1} = 
+  \begin{bmatrix} B & AB & A^2B \end{bmatrix}
+  \begin{bmatrix}
+    1 & \alpha_1 & \alpha_2 & \alpha_3 & \alpha_4 & \alpha_5\\
+    0 & 1 & \alpha_1 & \alpha_2 & \alpha_3 & \alpha_4\\
+    0 & 0 & 1 & \alpha_1 & \alpha_2 & \alpha_3\\
+    0 & 0 & 0 & 1 & \alpha_1 & \alpha_2\\
+    0 & 0 & 0 & 0 & 1 & \alpha_1\\
+    0 & 0 & 0 & 0 & 0 & 1\\
+  \end{bmatrix}
+\end{equation}\begin{equation}
+  Q = \left[\begin{matrix}0 & 0 & -0.025 & 14.722 & -4.171 & 169.324\\0 & -0.5 & 0.088 & -12.277 & 3.804 & -205.383\\0 & 1.0 & -0.125 & 4.922 & -1.964 & 120.82\\1.0 & -0.125 & 4.922 & -1.964 & 120.82 & -59.665\\-0.5 & 0.088 & -12.277 & 3.804 & -205.383 & 95.517\\0 & -0.025 & 14.722 & -4.171 & 169.324 & -83.786\end{matrix}\right]\left[\begin{matrix}1 & 0.275 & -14.695 & -1.716 & -48.167 & 0\\0 & 1 & 0.275 & -14.695 & -1.716 & -48.167\\0 & 0 & 1 & 0.275 & -14.695 & -1.716\\0 & 0 & 0 & 1 & 0.275 & -14.695\\0 & 0 & 0 & 0 & 1 & 0.275\\0 & 0 & 0 & 0 & 0 & 1\end{matrix}\right]
+\end{equation}
+\begin{equation}
+  Q = \left[\begin{matrix}0 & 0 & -0.025 & 14.715 & 0.245 & -48.118\\0 & -0.5 & -0.05 & -4.905 & 0 & 0\\0 & 1.0 & 0.15 & -9.808 & -0.49 & 0\\1.0 & 0.15 & -9.808 & -0.49 & 0 & 0\\-0.5 & -0.05 & -4.905 & 0 & 0 & 0\\0 & -0.025 & 14.715 & 0.245 & -48.118 & 0\end{matrix}\right]
+\end{equation}
+\begin{equation}
+  P = Q^{-1} = \left[\begin{matrix}0 & 0.1 & -0.075 & 0.5 & -1.0 & 0.001\\0 & -1.0 & 0.5 & 0.003 & 0.005 & -0.005\\0 & 0 & 0.003 & -0.051 & -0.102 & 0\\0 & -0.102 & -0.051 & 0 & 0.001 & 0.001\\0 & 0 & 0 & -0.016 & -0.031 & -0.021\\-0.021 & -0.031 & -0.016 & 0 & 0 & 0\end{matrix}\right]
+\end{equation}
+\begin{equation}
+  k = \bar k P = \left[\begin{matrix}-74.816 & -739.453 & -115.411 & -138.066 & -323.582 & -116.417\end{matrix}\right]
+\end{equation}
