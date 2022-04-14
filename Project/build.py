@@ -26,7 +26,7 @@ def extensionLessName(fileName: str) -> str:
     return fileName.split("/")[-1].split(".")[0]
     
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(level=logging.INFO)
     inst = TemplateCore.instance()
     inst.templateDir = "Templates"
     inst.resultsFolder = "TexFolder"

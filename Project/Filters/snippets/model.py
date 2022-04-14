@@ -1,14 +1,15 @@
 import sympy
+from functools import cache
 from sympy import cos, sin
 from typing import Callable, Iterable, Tuple
 from copy import deepcopy
 
 def model_system(update: Callable[[sympy.Matrix, sympy.Matrix], sympy.Matrix],
-                 output: Callable[[sympy.Matrix, sympy.Matrix], sympy.Matrix],
-                 x_0: sympy.Matrix,
-                 inputs: Iterable[sympy.Matrix],
-                 *args,
-                 **dargs) -> Iterable[Tuple]:
+                output: Callable[[sympy.Matrix, sympy.Matrix], sympy.Matrix],
+                x_0: sympy.Matrix,
+                inputs: Iterable[sympy.Matrix],
+                *args,
+                **dargs) -> Iterable[Tuple]:
     """
     A generic model for any system can work with linear and nonlinear
     systems. update functions returns the next state, and output outputs
@@ -29,6 +30,7 @@ def model_system(update: Callable[[sympy.Matrix, sympy.Matrix], sympy.Matrix],
 def non_linear_update(x: sympy.Matrix,
                       r: sympy.Matrix,
                       k: sympy.Matrix,
+                      f: sympy.Matrix,
                       dt: float,
                       *args, **dargs) -> sympy.Matrix:
     """
@@ -36,17 +38,26 @@ def non_linear_update(x: sympy.Matrix,
     @arg x is the previous state sys
     @arg r input before any feedback
     @arg k feedback matrix
+    @arg f output equation given the state variables
     @returns next state
     """
-    x_1 = float(x[0, 0])
-    x_2 = float(x[1, 0])
-    u = float( ((k*x) * r)[0,0] )
-    dot_x_1 = -2*x_1 + x_2 + sin(x_2)
-    dot_x_2 = -x_2*cos(x_1) + cos(2*x_1)*u
-    new_x = sympy.Matrix([
-        [x_1 + (dt*dot_x_1)],
-        [x_2 + (dt*dot_x_2)]
+    if k is not None:
+        u = r - (k*x)
+    else:
+        u = r
+    y = (r'y', x[0, 0])
+    theta_1 = (r'\theta_1', x[1, 0])
+    theta_2 = (r'\theta_2', x[2, 0])
+    dot_y = (r'\doty', x[3, 0])
+    dot_theta_1 = (r'\dot\theta_1', x[4, 0])
+    dot_theta_2 = (r'\dot\theta_2', x[5, 0])
+    u = ('u', u[0,0])
+    dot_x = f.subs([
+        theta_1, theta_2, y,
+        dot_theta_1, dot_theta_2, dot_y,
+        u
     ])
+    new_x = sympy.N(x + (dt*dot_x))
     return new_x
     
 def linear_update(x: sympy.Matrix,
@@ -60,11 +71,12 @@ def linear_update(x: sympy.Matrix,
     Linear output equation
     """
     if k is not None:
-        u = (k*x) * r
+        u = r - (k*x)
     else:
         u = r
-    dx = A*x + B*r
+    dx = A*x + B*u
     return x + (dx*dt)
+
 def linear_output(x: sympy.Matrix,
                   r: sympy.Matrix,
                   C: sympy.Matrix,
@@ -72,5 +84,19 @@ def linear_output(x: sympy.Matrix,
                   *args, **dargs) -> sympy.Matrix:
     """
     Linear output equation
+    """
+    return C*x + D*r
+
+
+def linear_output_with_observer(x: sympy.Matrix,
+                                r: sympy.Matrix,
+                                A: sympy.Matrix,
+                                B: sympy.Matrix,
+                                C: sympy.Matrix,
+                                D: sympy.Matrix,
+                                *args, **dargs) -> sympy.Matrix:
+    """
+    Linear output equation with observer,
+    performs the observer update as well(linear)
     """
     return C*x + D*r

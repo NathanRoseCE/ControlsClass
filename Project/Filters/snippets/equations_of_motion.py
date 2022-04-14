@@ -25,9 +25,9 @@ def state_symbols() -> Iterable[sympy.Symbol]:
     return sympy.symbols(
         r'y, \theta_1, \theta_2, \doty, \dot\theta_1, \dot\theta_2, u'
     )
-   
-@freezeargs
-@cache
+
+# @freezeargs
+# @cache
 def equation_of_motion_sympy(evaluate_vals:bool=False,
                              *args, **dargs) -> Tuple[Matrix, str, Matrix, Matrix, Matrix]:
     """
@@ -118,7 +118,7 @@ def equations_of_motion_nonlinear_str(*args, **dargs) -> str:
         r"\end{equation}"
     ).replace(r'\\', r'\\'+'\n')
 
-@cache
+# @cache
 def linearized_update_equation(*args, **dargs) -> Tuple[Matrix, Matrix, Matrix]:
     """
     gets the A, B, and x matrix for the linearized system

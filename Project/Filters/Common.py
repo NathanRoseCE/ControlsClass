@@ -31,7 +31,8 @@ def registrationInfo():
           LaplaceInverse.name: LaplaceInverse.filter,
           Laplace.name: Laplace.filter,
           EigenValues.name: EigenValues.filter,
-          ImageFigure.name: ImageFigure.filter
+          ImageFigure.name: ImageFigure.filter,
+          Image.name: Image.filter
     }
     
 class TODO(TemplateFilter):
@@ -371,3 +372,21 @@ class ImageFigure(TemplateFilter):
                   (r"  \caption{"+caption+"}\n" if caption != "" else  "") + 
                   (r"  \label{"+label+"}\n" if caption != "" else  "") + 
                   r"\end{figure}" + "\n")
+
+class Image(TemplateFilter):
+     name="image"
+
+     @staticmethod
+     def filter(args) -> None:
+          image_filepath = args[0]
+          caption = args[1]
+          label_tag = args[2]
+          return (
+               r"\begin{figure}[H]"+"\n"+
+               r"  \begin{center}"+"\n"+
+               r"    \makebox[\textwidth]{\includegraphics[max width=\textwidth]{"+image_filepath+"}}\n"+
+               r"  \end{center}"+"\n"+
+               r"  \caption{" + caption + "}\n"+
+               r"  \label{" + label_tag + "}\n"+
+               r"\end{figure}"+"\n"
+          )
