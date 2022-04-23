@@ -1,0 +1,60 @@
+\section{Introduction}
+
+\subsection{Defining the non-linear system}
+A doubly inverted pendulum is a pendulum on a pendulum. What makes this a classical control problem is the
+inverted nature of the system. That is instead of hanging the pendulum, the goal is to balence it upright.
+
+The equations of motion were derived with assistance from \cite{eq_of_motion}.
+% \ PY { 're-add the filter' | TODO }
+% \ PY { 'fix cite with a filter' | TODO }
+
+This will not be a derivation of the work, as the work follows closely from \cite{eq_of_motion} which I used
+as a source to help derive the non-linear equations of motion. 
+
+% \ PY { non_linear_system | nonlinear_equation_symbolic }
+% \ PY { non_linear_system | nonlinear_equation_evaluated }
+% \ PY { 'fix runnon equations...... somehow' | TODO }
+
+\subsection{Defining the linear system}
+The Linearization was simply a jacobian taken at 0,0,0 which is an equilibrium point that the system will be
+controlled to.
+
+% \ PY { non_linear_system | linear_equation_symbolic }
+\begin{equation}
+ \dot x = \left[\begin{matrix}0 & 0 & 0 & 0 & 0 & 1.0\\0 & 0 & 0 & 0 & 1.0 & 0\\0 & 0 & 0 & 1.0 & 0 & 0\\0 & -9.81 & 0 & -0.1 & 0.05 & 0\\0 & 14.715 & -4.905 & 0.05 & -0.075 & 0.05\\0 & -9.81 & 9.81 & -1.0 \cdot 10^{-141} & 0.05 & -0.1\end{matrix}\right]\left[\begin{matrix}y\\\theta_{1}\\\theta_{2}\\\doty\\\dot\theta_{1}\\\dot\theta_{2}\end{matrix}\right] + \left[\begin{matrix}0\\0\\0\\1.0\\-0.5\\-2.0 \cdot 10^{-140}\end{matrix}\right]u
+\end{equation}
+
+
+
+\subsection{Transfer Function}
+The transfer function was calculated as follows:
+\begin{equation}
+G(s) = C(sI-A)^{-1}B + D
+\end{equation}
+\begin{equation}
+G(s) = \left[\begin{matrix}\frac{1.0 \left(45438.68 s^{3} + 4543.868 s^{2} - 445639.88 s - 44563.988\right)}{4630.693 s^{7} + 1736.51 s^{6} - 67920.696 s^{5} - 14753.389 s^{4} - 223841.934 s^{3} - 22304.708 s^{2}} - \frac{0.5 \left(231.535 s^{4} - 45380.796 s^{3} - 6811.75 s^{2} - 445867.016 s - 44563.988\right)}{4630.693 s^{7} + 1736.51 s^{6} - 67920.696 s^{5} - 14753.389 s^{4} - 223841.934 s^{3} - 22304.708 s^{2}}\\\frac{1.0 \left(22281.994 s^{8} - 2175279.664 s^{7} - 1145628.722 s^{6} + 31941104.707 s^{5} + 6948321.196 s^{4} + 105500215.497 s^{3} + 21019800.024 s^{2} + 1050722.779 s\right)}{445639.88 s^{11} + 289665.922 s^{10} - 13038030.264 s^{9} - 6656077.248 s^{8} + 52259381.006 s^{7} + 17016437.957 s^{6} + 633240645.131 s^{5} + 178949686.432 s^{4} + 1049696982.54 s^{3} + 207098531.98 s^{2} + 10328626.365 s} - \frac{0.5 \left(445639.88 s^{9} + 256242.931 s^{8} - 6497429.45 s^{7} - 2943562.817 s^{6} - 21967439.091 s^{5} - 8623215.236 s^{4} - 1288566.376 s^{3} - 85806.076 s^{2} - 2144.332 s\right)}{445639.88 s^{11} + 289665.922 s^{10} - 13038030.264 s^{9} - 6656077.248 s^{8} + 52259381.006 s^{7} + 17016437.957 s^{6} + 633240645.131 s^{5} + 178949686.432 s^{4} + 1049696982.54 s^{3} + 207098531.98 s^{2} + 10328626.365 s}\\- \frac{0.5 \left(109293.181 s^{8} - 21391407.767 s^{7} - 11784263.962 s^{6} + 313100152.783 s^{5} + 104940973.11 s^{4} + 1044421391.697 s^{3} + 310174141.791 s^{2} + 30964843.195 s + 1031810.842\right)}{2185863.611 s^{11} + 1420811.347 s^{10} - 63951538.446 s^{9} - 32648058.9 s^{8} + 256332263.833 s^{7} + 83465628.18 s^{6} + 3106045364.367 s^{5} + 877748211.948 s^{4} + 5148763699.359 s^{3} + 1015818299.362 s^{2} + 50661912.318 s} + \frac{1.0 \left(2185863.611 s^{9} + 1202224.986 s^{8} - 64066296.286 s^{7} - 27847082.711 s^{6} + 363506222.309 s^{5} + 110073981.982 s^{4} + 1559798368.584 s^{3} + 413302636.194 s^{2} + 36123897.402 s + 1031810.842\right)}{2185863.611 s^{11} + 1420811.347 s^{10} - 63951538.446 s^{9} - 32648058.9 s^{8} + 256332263.833 s^{7} + 83465628.18 s^{6} + 3106045364.367 s^{5} + 877748211.948 s^{4} + 5148763699.359 s^{3} + 1015818299.362 s^{2} + 50661912.318 s}\end{matrix}\right]
+\end{equation}
+
+
+\subsection{Controllability and Observability of the system}
+Controllability of the system:
+\begin{equation}
+  \begin{bmatrix}
+    B & AB & A^2B & A^3B & A^4B & A^5B
+  \end{bmatrix}
+\end{equation}
+\begin{equation}
+\left[\begin{matrix}0 & 0 & -0.025 & 14.722 & -4.171 & 169.324\\0 & -0.5 & 0.088 & -12.277 & 3.804 & -205.383\\0 & 1.0 & -0.125 & 4.922 & -1.964 & 120.82\\1.0 & -0.125 & 4.922 & -1.964 & 120.82 & -59.665\\-0.5 & 0.088 & -12.277 & 3.804 & -205.383 & 95.517\\0 & -0.025 & 14.722 & -4.171 & 169.324 & -83.786\end{matrix}\right]
+\end{equation}
+The determinate is non-zero thus the system is controllable
+
+Observability of the system:
+\begin{equation}
+  \begin{bmatrix}
+    C \\ CA \\ CA^2 \\ CA^3 \\ CA^4 \\ CA^5
+  \end{bmatrix}
+\end{equation}
+\begin{equation}
+\left[\begin{matrix}1 & 0 & 0 & 0 & 0 & 0\\0 & 1 & 0 & 0 & 0 & 0\\0 & 0 & 1 & 0 & 0 & 0\\0 & 0 & 0 & 0 & 0 & 1.0\\0 & 0 & 0 & 0 & 1.0 & 0\\0 & 0 & 0 & 1.0 & 0 & 0\end{matrix}\right]
+\end{equation}
+The determinate is non-zero thus the system is observable

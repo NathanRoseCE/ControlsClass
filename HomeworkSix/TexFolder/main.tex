@@ -21,21 +21,19 @@
 \usepackage[backend=biber,style=ieee]{biblatex}
 \addbibresource{resources/sources.bib}
 
-\title{Controls Project}
+\title{Homework 6}
 \author{Nathan Rose}
 \date{\today}
 
-\newcommand{\doty}{\dot y}
+
 \newcommand{\laplace}[1]{\mathscr{L}(#1)}
 \newcommand{\laplaceinv}[1]{\mathscr{L}^{-1}(#1)}
 \begin{document}
 \maketitle
-\subimport{./}{introduction}
-\subimport{./}{responses}
-\subimport{./}{problem_statement}
-\subimport{./}{controller_design}
-\subimport{./}{observer_design}
-\subimport{./}{conclusion}
-\subimport{./}{appendix}
+\begin{enumerate}
+  \subimport{./}{one}
+  \subimport{./}{two}
+\end{enumerate}
 \subimport{./}{help_recieved}
+\subimport{./}{appendix}
 \end{document}

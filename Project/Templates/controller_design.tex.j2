@@ -1,9 +1,9 @@
-\section{The Controller}
+\subsection{The Controller}
 To begin with, we will develop a controller that will be used in order to apply feedback and make the system
 controllable.
 
 \PY{ 're-enable this' | TODO }
-% \ PY non_linear_system | design_k }
+% \ PY {non_linear_system | design_k }
 
 First the goal is to see if the system behaves well in a non-linear system from various distances from the
 origin.
@@ -16,7 +16,7 @@ starting states can be overlaid on the same graph the following C matrix was use
   \end{bmatrix}
 \end{equation}
 
-% \ PY non_linear_system | eval_k_linear }
+% \ PY {non_linear_system | eval_k_linear }
 
 from these graphs, it can be seen that even non-sensically high values can be controlled down to zero, thanks
 to the linear approximation and the controller being able to compensate for it. Howver this does show that the
@@ -26,4 +26,4 @@ Now to see the usefulness of the controller, let us re-apply the system to the n
 states are adjusted by a factor of 100, which was necessary in order to make sure that all of the states
 converged. THe same C matrix was used for a linear output
 
-% \ PY non_linear_system | eval_k_nonlinear }
+% \ PY {non_linear_system | eval_k_nonlinear }

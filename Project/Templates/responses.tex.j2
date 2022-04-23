@@ -1,0 +1,19 @@
+\section{Controller and Observer Design}
+\subsection{State and input response}
+
+This system is really complicated and I am unable to find a mathmatical solution to $e^AT$
+or $\laplaceinv{(sI-A)^{-1}}$. I even tried to have my computer solve it to no luck
+as a result, I am going to plot the response by modeling the system with code required later.
+As the system is non-stable it quickly explodes
+Zero State Response
+\PY{ non_linear_system | zero_state_response }
+
+Zero Input Response
+\PY{ non_linear_system | zero_input_response }
+
+As this system is massively unstable, I will only be doing simulation runs with zero input(shown again below)
+however, the total state response for a less unstable system is achieved by adding the zero state response
+with the zero state response for a given input and state.
+
+Total Response
+\PY{ non_linear_system | total_response }

@@ -35,13 +35,12 @@ def observer_update_wrapper(x: sympy.Matrix,
                             k: sympy.Matrix=None,
                             *args, **dargs) -> Tuple[sympy.Matrix, sympy.Matrix]:
     system_x, est_x = x
+    new_system_x = system_update(system_x, r, k=k, *args, **dargs)
+    sys_y = system_output(new_system_x, r, *args, **dargs)
+    new_est_x = observer_update(est_x, r, sys_y, k=k, *args, **dargs)
     if k is not None:
-        u = (r - k*system_x)
-    else:
-        u = r
-    new_system_x = system_update(system_x, u, *args, **dargs)
-    sys_y = system_output(new_system_x, u, *args, **dargs)
-    new_est_x = observer_update(est_x, u, sys_y, *args, **dargs)
+        u = (r - k*new_est_x)
+        new_system_x = system_update(system_x, u, *args, **dargs)
     return new_system_x, new_est_x
 
 def observer_update(x_est: sympy.Matrix,
@@ -65,7 +64,7 @@ def observer_output_wrapper(x: sympy.Matrix,
     """
     system_x, est_x = x
     condenser = sympy.Matrix([
-        [1,1,1,1,1,1]
+        [1,1,1]
     ])
     system_out = (condenser * system_x)[0,0]
     observer_out = (condenser * est_x)[0,0]
@@ -74,9 +73,9 @@ def observer_output_wrapper(x: sympy.Matrix,
 
 def non_linear_update(x: sympy.Matrix,
                       r: sympy.Matrix,
+                      k: sympy.Matrix,
                       f: sympy.Matrix,
                       dt: float,
-                      k: sympy.Matrix=None,
                       *args, **dargs) -> sympy.Matrix:
     """
     Non linear update equation to handle question 4
@@ -145,4 +144,3 @@ def linear_output_with_observer(x: sympy.Matrix,
     performs the observer update as well(linear)
     """
     return C*x + D*r
-

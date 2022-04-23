@@ -1,0 +1,83 @@
+\item For the system in problem 2, design an ouput feedback control law such that two of the eigenvalues of the
+  closed loop system become -3 and -4. Verify the eigenvalues of the closed loop system. \\
+  Assuming this question is asking to design an observer
+  shooting for $-4, -3, -4$
+  \begin{equation}
+    \begin{bmatrix}
+      \mu_{d_i}I -A^T & C^T
+    \end{bmatrix}
+    \Phi_i =
+    0
+  \end{equation}
+  \begin{equation}
+    \begin{bmatrix}
+      \mu_{d_i}+2 & 0 & 0 & 1 & 0\\
+      2 & \mu_{d_i} & 3 & 0 & 1 \\
+      0 & -1 & \mu_{d_i}+4 & 1 & 0
+    \end{bmatrix}\Phi_i =
+    0
+  \end{equation}
+  \begin{equation}
+    \begin{bmatrix}
+      -2 & 0 & 0 & 1 & 0\\
+      2 & -4 & 3 & 0 & 1\\
+      0 & -1 & 0 & 1 & 0
+    \end{bmatrix}\Phi_{1,2} =
+    0
+  \end{equation}
+  \begin{equation}
+    \Phi_{1,2} = 
+    \begin{bmatrix}
+      1 & 1 \\
+      2 & 2 \\
+      2 & 0 \\
+      2 & 2 \\
+      0 & 6 \\
+    \end{bmatrix}
+  \end{equation}
+  \begin{equation}
+    \begin{bmatrix}
+      -1 & 0 & 0 & 1 & 0\\
+      2 & -3 & 3 & 0 & 1\\
+      0 & -1 & 1 & 1 & 0
+    \end{bmatrix}\Phi_{1,2} =
+    0
+  \end{equation}
+  \begin{equation}
+    \Phi_3 =
+    \begin{bmatrix}
+      0 \\
+      1 \\
+      1 \\
+      0 \\
+      0 \\
+    \end{bmatrix}
+  \end{equation}
+  \begin{equation}
+    \bar \Phi =
+    \begin{bmatrix}
+      1 & 1 & 0 \\
+      2 & 2 & 1\\
+      2 & 0 & 1\\
+    \end{bmatrix}
+  \end{equation}
+  \begin{equation}
+    L^T \bar \Phi  =
+    \begin{bmatrix}
+      2 & 2 &0\\
+      0 & 6 & 0\\
+    \end{bmatrix}
+  \end{equation}
+  \begin{equation}
+    \begin{bmatrix}
+      2 & 2 & 0\\
+      0 & 6 & 0\\
+    \end{bmatrix}
+    \bar \Phi^{-1} = L =
+    \begin{bmatrix}
+      2 & 0 \\
+      0 & 3 \\
+      0 & -3
+    \end{bmatrix}
+  \end{equation}
+  checking with python values are correct

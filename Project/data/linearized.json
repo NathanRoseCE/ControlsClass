@@ -10,9 +10,9 @@
 	"d_2": 0.1,
 	"d_3": 0.1,
 	"C": [
-	    [0,0,0,1,0,0],
-	    [0,0,0,0,1,0],
-	    [0,0,0,0,0,1]
+	    [1,0,0,0,0,0],
+	    [0,1,0,0,0,0],
+	    [0,0,1,0,0,0]
 	],
 	"desired_controller_eigenvalues":
 	[
@@ -21,12 +21,12 @@
 	        "imaginary": 3
 	    },
 	    {
-	        "real": -4,
-	        "imaginary": 4
+	        "real": -3.5,
+	        "imaginary": 3.5
 	    },
 	    {
-	        "real": -5,
-	        "imaginary": 5
+	        "real": -4,
+	        "imaginary": 4
 	    }
 	],
 	"dt": 0.01,
@@ -41,6 +41,13 @@
 	    [[0], [0.02],[0],[0],[0],[0]],
 	    [[0],[0],[0.04],[0],[0],[0]]
 	],
-	"eigenvector_scale_factor": 3
+	"x_0_linear_est_sys": [
+	    [0.001],[0],[0],[0],[0],[0]
+	],
+	"x_0_linear_est_est": [
+	    [0],[0],[0],[0],[0],[0]
+	],
+	"eigenvector_scale_factor": 3,
+	"enable_eat": false
     }
 }

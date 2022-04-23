@@ -1,0 +1,68 @@
+\item Consider the LTI SISO system in Problem 2 of homework 5:
+  \begin{equation}
+    A =
+    \begin{bmatrix}
+      -2 & -2 & 0 \\
+      0 & 0 & 1 \\
+      0 & -3 & -4 
+    \end{bmatrix}
+    B =
+    \begin{bmatrix}
+      1 & 0 \\
+      0 & 0 \\
+      0 & 1
+    \end{bmatrix}
+    C =
+    \begin{bmatrix}
+      1 & 0 & 1 \\
+      0 & 1 & 0
+    \end{bmatrix}
+  \end{equation}
+  Recall that, in that homework, you designed a state feedback control law $\bar u(t) = -K\bar x(t)$ such that
+  the eigenvalues of the closed-loop system because $\lambda_{d_1} = \lambda_{d_2} = -3$ and $\lambda_{d_3} = -4$.
+  ie you have already obtained the control gain matrix $K$
+  \begin{enumerate}
+  \item Design a full-order observer with observer poles $\mu_{d_1} = -6, \mu_{d_2} = -7, \mu_{d_3}=-8$ using
+    either methodd 1 in slide 121 or method 2 on slide 122 and verify the eigenvalues of
+    $(A-LC)$. \\
+    \PY{ system | design_l }
+  \item We know that using seperation principle we can design an observer-basesd feedback control. In eqs 69, 70
+    of the slides, let the control input be $\bar u(t) = -K\hat x(t)$ with the control gain matrix $k$ obtained
+    obtained in either part a or part b of problem 2 of homework 5, and let the observer gain matrix $L$ be that
+    obtained in part (a) above. Simulate and plot the state response of the closed-loop system assuming that the
+    initial conditions of the states and estimated state are
+    $\bar x_0 = \begin{bmatrix} 1 \\ -1 \\ 2.3 \end{bmatrix}$ and 
+    $\hat x_0 = \begin{bmatrix} 1.7 \\ -0.3 \\ 2.5 \end{bmatrix}$ respectively. In your plots ensure that
+    the transient response and system convergence are depicted clearly.
+    \PY{ system | model_l }
+  \item Design a reduce order observer with observer pole $\mu_{d_1} = -8$. No need for computer simulation\\
+    \begin{equation}
+      F = -8
+    \end{equation}
+    \begin{equation}
+      G = 1
+    \end{equation}
+    \begin{equation}
+      TA - FT = GC =
+      T
+      \begin{bmatrix}
+        -2 & -2 & 0 \\
+        0 & 0 & 1 \\
+        0 & -3 & -4 
+      \end{bmatrix}
+      - 8T = 
+      \begin{bmatrix}
+        1 & 0 & 1 \\
+        0 & 1 & 0
+      \end{bmatrix}
+    \end{equation}
+    some very manual brute forcing later
+    \begin{equation}
+      T =
+      \begin{bmatrix}
+        0.1667 & -0.5 & -0.14583333 \\
+        0 & 0.1143 & -0.0285
+      \end{bmatrix}
+    \end{equation}
+  \end{enumerate}
+  

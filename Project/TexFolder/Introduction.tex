@@ -1,23 +1,18 @@
 \section{Introduction}
 
-\subsection{Defining the non-linear system}
-A doubly inverted pendulum is a pendulum on a pendulum. What makes this a classical control problem is the
-inverted nature of the system. That is instead of hanging the pendulum, the goal is to balence it upright.
+The project for Controls will involve controlling a doubly inverted pendulum with a linear ``cart''. The goals
+of this project are to
+\begin{enumerate}
+\item Linearize the system about the stability point and design a controller for it.
+\item Determine the limits of the controller with respect to each state variable(in isolation) 
+\end{enumerate}
 
-The equations of motion were derived with assistance from \cite{eq_of_motion}.
-{\LARGE \color{red} TODO: re-add the filter}
-% \ PY{ 'fix cite with a filter' | TODO }
+In order to simplify the model, the mass of the pendulums will be assumed to be at the end of the rod, rather
+than in the middle as it would be for a constant density rod.
 
-This will not be a derivation of the work, as the work follows closely from \cite{eq_of_motion} which I used
-as a source to help derive the non-linear equations of motion. 
-
-% \ PY{ non_linear_system | nonlinear_equation_symbolic }
-% \ PY{ non_linear_system | nonlinear_equation_evaluated }
-% \ PY{ 'fix runnon equations...... somehow' | TODO }
-
-\subsection{Defining the linear system}
-The Linearization was simply a jacobian taken at 0,0,0 which is an equilibrium point that the system will be
-controlled to.
-
-% \ PY{ non_linear_system | linear_equation_symbolic }
-% \ PY{ non_linear_system | linear_equation_evaluated }
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.25\textwidth]{../resources/doublyInvertedPendulum.jpg}
+  \caption{System to be modeled}
+  \label{}
+\end{figure}

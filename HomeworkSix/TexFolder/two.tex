@@ -1,0 +1,46 @@
+\item use Eqs 77-81 to verify equation 82 of the slides
+  Equation 82:
+  \begin{equation}
+    \dot {\bar e} =
+    \dot {\bar z_2}(t) - \dot {\hat z_2}(t) =
+    (\tilde A_{22} - L\tilde{A_{12}})\bar e(t)
+  \end{equation}
+  with initial conditions: $\bar e(0) = \bar z_2(0) - \hat z _2(0)$
+
+  Given:
+  \begin{equation}
+    \dot {\bar z_2}(t) = \tilde A_{22} \bar z_2(t) + \tilde{A}_{21}(\bar y(t) - D\bar u(t)) + \tilde{B}_2\bar u(t)
+  \end{equation}
+  \begin{equation}
+    \hat y_r(t) = \tilde A_{12}\hat z_2(t) =
+    \dot {\bar y}(t) - \tilde A_{11}(\bar y(t) - D\bar u(t)) - \tilde B_1 \bar u(t) - D\dot {\bar u}(t)
+  \end{equation}
+  \begin{equation}
+    \dot \hat z_2(t) =
+    \tilde A_{22}\hat z_2(t) + \tilde A_{21}(\bar y(t) - D\bar u(t)) + \tilde B_2\bar u(t) + L(\bar y_r(t) - \tilde A_{12}\bar z_2(t))
+  \end{equation}
+  \begin{equation}
+    \hat z_2(t) =
+    \tilde A_{22}\hat z_2(t) + \tilde A_{21}(\bar y(t) - D\bar u(t)) + \tilde B_2\bar u(t) + L(\bar y_r(t) - \tilde A_{12}\bar z_2(t))
+  \end{equation}
+  \begin{equation}
+    \dot {\bar {z_2}}(t) - \dot {\hat {z_2}}(t)
+  \end{equation}
+  \begin{equation}
+    (\tilde A_{21} \bar z_2(t) + \tilde{A}_{21}(\bar y(t) - D\bar u(t)) + \tilde{B}_2\bar u(t))  - (\tilde A_{22}\hat z_2(t) + \tilde A_{21}(\bar y(t) - D\bar u(t)) + \tilde B_2\bar u(t) + L(\bar y_r(t) - \tilde A_{12}\hat z_2(t)))
+  \end{equation}
+  \begin{equation}
+    \tilde A_{21}(\bar z_2(t)-\hat z_2(t)) - (L(\bar y_r(t) - \tilde A_{12}\hat z_2(t)))
+  \end{equation}
+  \begin{equation}
+    \tilde A_{21}(\bar z_2(t)-\hat z_2(t)) - (L(\tilde A_{12}\bar z_2(t) - \tilde A_{12}\hat z_2(t)))
+  \end{equation}
+  \begin{equation}
+    \tilde A_{21}(\bar z_2(t)-\hat z_2(t)) - (L\tilde A_{12}(\bar z_2(t) - \hat z_2(t)))
+  \end{equation}
+  \begin{equation}
+    (\tilde A_{21} - L\tilde A_{21})(\bar z_2(t)-\hat z_2(t))
+  \end{equation}
+  \begin{equation}
+    (\tilde A_{21} - L\tilde A_{21})\bar e(t)
+  \end{equation}

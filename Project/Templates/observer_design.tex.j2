@@ -1,4 +1,4 @@
-\section{The Observer}
+\subsection{The Observer}
 The previous section assumed that the state variables can be modeled, which is not necessaryily the case. To make
 it interesting I am going to assume that the system's velocities can be measured(ie only relative encoders are
 available for the system).
@@ -7,3 +7,10 @@ This is going to create a c matrix of:
 \PY{ non_linear_system["C"] |  bmatrix | eq }
 
 \PY{ non_linear_system | design_l }
+\PY{ non_linear_system | eval_l_linear }
+
+For the next two plots, I was not able to get the observer to converge fast enough, with little overshoot
+in order to cause the system to be stable. I know parrallel axis theorem is a thing, and I cannot explain it,
+so for the next two plots, the feedback is given the true state rather than the estimated state.
+\PY{ non_linear_system | eval_l_with_k_linear }
+\PY{ non_linear_system | eval_l_nonlinear }
